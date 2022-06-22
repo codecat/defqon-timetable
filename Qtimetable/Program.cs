@@ -57,7 +57,7 @@ namespace Qtimetable
 		static void Main(string[] args)
 		{
 			// Download data
-			string dataUrl = @"https://prod.api-dev.q-dance.com/v1/eventsPage/eventEditionOverview/defqon-1-weekend-festival-2019?locale=nl";
+			string dataUrl = @"https://prod.api-dev.q-dance.com/v1/eventsPage/eventEditionOverview/defqon-1-weekend-festival-2022?locale=nl";
 
 			var wc = new WebClient();
 			wc.Proxy = null;
@@ -73,10 +73,15 @@ namespace Qtimetable
 
 				var objStages = objDay.SelectToken("stages");
 				foreach (var objStage in objStages) {
-					// "The Closing Ceremony" is a separate stage in the timetable, but it's still on Red
 					var stageTitle = (string)objStage.SelectToken("title");
-					if (stageTitle == "The Closing Ceremony") {
-						stageTitle = "Red";
+					if (stageTitle == "BLUE AFTERPARTY") {
+						stageTitle = "BLUE";
+					}
+					if (stageTitle == "MAGENTA AFTERPARY (SILENT)") {
+						stageTitle = "MAGENTA";
+					}
+					if (stageTitle == "Heineken SILVER (SILENT)") {
+						stageTitle = "SILVER";
 					}
 
 					var stage = GetStage(stageTitle);
@@ -89,11 +94,6 @@ namespace Qtimetable
 					var objTimeslots = objStage.SelectToken("timeSlots");
 					foreach (var objTimeslot in objTimeslots) {
 						var title = ((string)objTimeslot.SelectToken("title")).Trim();
-
-						// The contest winner is already scheduled, but still listed in Q's json. We just ignore it.
-						if (title == "Defqon.1 Contest Winner") {
-							continue;
-						}
 
 						// Remove characters that mess with the formatting (remove instead of escape, because it'll make .find easier)
 						title = title.Replace("*", ""); // A*S*Y*S
@@ -112,11 +112,6 @@ namespace Qtimetable
 						var timeStart = EpochToDate((long)objTimeslot.SelectToken("dateTimeStart"));
 						var timeEnd = EpochToDate((long)objTimeslot.SelectToken("dateTimeEnd"));
 
-						// Add 3 minutes to all stages that have a video stream
-						if (stageTitle == "Red" || stageTitle == "Blue" || stageTitle == "Black" || (stageTitle == "UV" && timeStart.Day == 30)) {
-							timeStart += TimeSpan.FromMinutes(3);
-						}
-
 						stage.sets.Add(new Set() {
 							name = title,
 							dateTime = timeStart
@@ -130,7 +125,7 @@ namespace Qtimetable
 
 					// Add "Nothing" at the end of the day
 					stage.sets.Add(new Set() {
-						name = "Nothing",
+						name = "",
 						dateTime = lastEndTime
 					});
 					Console.WriteLine("    [ {0}, {1} ]: <Nothing>", lastEndTime.Hour, lastEndTime.Minute);
@@ -138,45 +133,45 @@ namespace Qtimetable
 			}
 
 			// Fill in any missing information
-			GetStage("Red").channel = "591927725594378240";
-			GetStage("Red").emoji = ":heart:";
-			GetStage("Red").url = "https://www.q-dance.com/en/videos/red-live-2019";
+			GetStage("RED").channel = "989101365345263646";
+			GetStage("RED").emoji = "<:dq_red:988093668219031603>";
+			GetStage("RED").url = "https://www.q-dance.com/";
 
-			GetStage("Blue").channel = "591928007351074816";
-			GetStage("Blue").emoji = ":blue_heart:";
-			GetStage("Blue").url = "https://www.q-dance.com/en/videos/blue-live-2019";
+			GetStage("BLUE").channel = "989101395351318589";
+			GetStage("BLUE").emoji = "<:dq_blue:988094952280055808>";
+			GetStage("BLUE").url = "https://www.q-dance.com/";
 
-			GetStage("Black").channel = "591928033523269632";
-			GetStage("Black").emoji = ":black_heart:";
-			GetStage("Black").url = "https://www.q-dance.com/en/videos/black-live-2019";
+			GetStage("BLACK").channel = "989101406025822329";
+			GetStage("BLACK").emoji = "<:dq_black:988094951038537778>";
+			GetStage("BLACK").url = "https://www.q-dance.com/";
 
-			GetStage("UV").channel = "591928065416757248";
-			GetStage("UV").emoji = ":purple_heart:";
-			GetStage("UV").url = "https://www.q-dance.com/en/videos/uv-live-2019";
+			GetStage("UV").channel = "989101415228141578";
+			GetStage("UV").emoji = "<:dq_uv:988094948199006298>";
+			GetStage("UV").url = "https://www.q-dance.com/";
 
-			GetStage("Magenta").channel = "591928254877794324";
-			GetStage("Magenta").emoji = ":loud_sound:";
-			GetStage("Magenta").url = "";
+			GetStage("YELLOW").channel = "989102581232042035";
+			GetStage("YELLOW").emoji = "<:dq_yellow:988094949780246548>";
+			GetStage("YELLOW").url = "https://www.q-dance.com/";
 
-			GetStage("Indigo").channel = "591928282295828480";
-			GetStage("Indigo").emoji = ":loud_sound:";
-			GetStage("Indigo").url = "";
+			GetStage("INDIGO").channel = "989102615843450880";
+			GetStage("INDIGO").emoji = "<:dq_indigo:988094943790792724>";
+			GetStage("INDIGO").url = "https://www.q-dance.com/";
 
-			GetStage("Yellow").channel = "591928310582345738";
-			GetStage("Yellow").emoji = ":loud_sound:";
-			GetStage("Yellow").url = "";
+			GetStage("MAGENTA").channel = "989102625570041866";
+			GetStage("MAGENTA").emoji = "<:dq_magenta:988094945057452203>";
+			GetStage("MAGENTA").url = "https://www.q-dance.com/";
 
-			GetStage("Gold").channel = "591928331159601154";
-			GetStage("Gold").emoji = ":loud_sound:";
-			GetStage("Gold").url = "";
+			GetStage("GOLD").channel = "989102635187576843";
+			GetStage("GOLD").emoji = "<:dq_gold:988094953903231036>";
+			GetStage("GOLD").url = "https://www.q-dance.com/";
 
-			GetStage("Silver").channel = "591928389938446356";
-			GetStage("Silver").emoji = ":loud_sound:";
-			GetStage("Silver").url = "";
+			GetStage("SILVER").channel = "989102642808631357";
+			GetStage("SILVER").emoji = "<:dq_silver:988094946756141156>";
+			GetStage("SILVER").url = "https://www.q-dance.com/";
 
-			GetStage("Purple").channel = "591928410209517568";
-			GetStage("Purple").emoji = ":loud_sound:";
-			GetStage("Purple").url = "";
+			GetStage("PURPLE").channel = "989102651864154122";
+			GetStage("PURPLE").emoji = "<:dq_purple:988094360006574103>";
+			GetStage("PURPLE").url = "https://www.q-dance.com/";
 
 			// Remove stages that don't have a channel set
 			for (int i = Stages.Count - 1; i >= 0; i--) {
@@ -196,10 +191,11 @@ namespace Qtimetable
 			});
 
 			// Write to file
-			if (File.Exists("Defqon2019.json")) {
-				File.Delete("Defqon2019.json");
+			if (File.Exists("Defqon2022.json")) {
+				File.Delete("Defqon2022.json");
 			}
-			using (var writer = new StreamWriter("Defqon2019.json")) {
+			using (var writer = new StreamWriter("Defqon2022.json", false, Encoding.UTF8)) {
+				writer.NewLine = "\n";
 				writer.WriteLine("[");
 				for (int j = 0; j < Stages.Count; j++) {
 					var stage = Stages[j];
@@ -213,10 +209,16 @@ namespace Qtimetable
 					writer.WriteLine("\t\t\"sets\": [");
 					for (int i = 0; i < stage.sets.Count; i++) {
 						var set = stage.sets[i];
-						if (set.name == "Nothing") {
-							writer.Write("\t");
+						var setName = set.name.Replace("\"", "\\\"");
+
+						// Fix encoding
+						setName = Encoding.UTF8.GetString(Encoding.Default.GetBytes(setName));
+
+						if (setName == "") {
+							writer.Write("\t\t\t\t[ {0}, {1}, {2}, {3}, {4} ]", set.dateTime.Year, set.dateTime.Month, set.dateTime.Day, set.dateTime.Hour, set.dateTime.Minute);
+						} else {
+							writer.Write("\t\t\t[ {0}, {1}, {2}, {3}, {4}, \"{5}\" ]", set.dateTime.Year, set.dateTime.Month, set.dateTime.Day, set.dateTime.Hour, set.dateTime.Minute, setName);
 						}
-						writer.Write("\t\t\t[ {0}, {1}, {2}, {3}, {4}, \"{5}\" ]", set.dateTime.Year, set.dateTime.Month, set.dateTime.Day, set.dateTime.Hour, set.dateTime.Minute, set.name);
 						if (i == stage.sets.Count - 1) {
 							writer.WriteLine();
 						} else {

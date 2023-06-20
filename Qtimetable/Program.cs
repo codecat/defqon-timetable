@@ -202,6 +202,9 @@ namespace Qtimetable
 						if (title == "Frenchcore Familia") {
 							title += " (Dr. Peacock, BillX, The Sickest Squad)";
 						}
+						if (title == "3 Blokes") {
+							title += " (Code Black, Toneshifterz, Audiofreq)";
+						}
 
 						// Fix encoding
 						title = Encoding.UTF8.GetString(Encoding.Default.GetBytes(title));

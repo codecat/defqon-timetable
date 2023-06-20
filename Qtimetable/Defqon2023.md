@@ -155,7 +155,7 @@ Friday | 17:15 | 2▲1 (Sound Rush & Atmozfears)
 Friday | 18:00 | B-Frontliner
 Friday | 18:45 | Primeshock presents Shockwork
 Friday | 19:30 | JDX Live
-Friday | 20:15 | 3 Blokes
+Friday | 20:15 | 3 Blokes (Code Black, Toneshifterz, Audiofreq)
 Friday | 21:00 | Billx presents The Rave Music Live Show
 Friday | 21:45 | "D:/CHILDHOOD/TRAUMA/GPF/LIVE/THEPIEPSHOW2023.WAV"
 Friday | 22:30 | 

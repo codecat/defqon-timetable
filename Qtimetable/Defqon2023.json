@@ -501,8 +501,7 @@
 			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://live.q-dance.com/>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
-			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
-			"^\\.(mc|mcs)$":":microphone2: The MC(s) on this stage: ****"
+			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>"
 		}
 	},
 	{
@@ -573,8 +572,7 @@
 			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://live.q-dance.com/>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
-			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
-			"^\\.(mc|mcs)$":":microphone2: The MC(s) on this stage: ****"
+			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>"
 		}
 	},
 	{
@@ -595,8 +593,7 @@
 			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://live.q-dance.com/>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
-			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
-			"^\\.(mc|mcs)$":":microphone2: The MC(s) on this stage: ****"
+			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>"
 		}
 	}
 ]

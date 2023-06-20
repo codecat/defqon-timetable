@@ -261,8 +261,11 @@ namespace Qtimetable
 					"```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");" +
 					"sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: " +
 					"<https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>";
-				stage.responses["^\\.(mc|mcs)$"] =
-					":microphone2: The MC(s) on this stage: **" + stage.mc + "**";
+
+				if (stage.mc != "") {
+					stage.responses["^\\.(mc|mcs)$"] =
+						":microphone2: The MC(s) on this stage: **" + stage.mc + "**";
+				}
 			}
 
 			// Write to file

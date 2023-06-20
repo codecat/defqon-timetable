@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -18,8 +19,6 @@ namespace Qtimetable
 
 	public class Stage
 	{
-		public int sortOrder;
-
 		public string stage = "";
 		public string mc = "";
 		public string channel = "";
@@ -40,13 +39,7 @@ namespace Qtimetable
 					return stage;
 				}
 			}
-
-			var ret = new Stage() {
-				stage = name
-			};
-			Stages.Add(ret);
-
-			return ret;
+			return null;
 		}
 
 		private static DateTime EpochToDate(long epoch)
@@ -59,46 +52,139 @@ namespace Qtimetable
 			return str.Replace("\\", "\\\\").Replace("\"", "\\\"");
 		}
 
-		static void Main(string[] args)
+		static async Task Main(string[] args)
 		{
-			// Download data
-			string dataUrl = @"https://prod.api-dev.q-dance.com/v1/eventsPage/eventEditionOverview/defqon-1-weekend-festival-2022?locale=nl";
+			// Create stages with info that we care about
+			Stages.Add(new() {
+				stage = "RED",
+				channel = "1120713959763357706",
+				emoji = "<:dq_red:988093668219031603>",
+				url = "https://live.q-dance.com/",
+			});
 
-			var wc = new WebClient();
-			wc.Proxy = null;
-			wc.Headers[HttpRequestHeader.UserAgent] = "r/Hardstyle / discord.gg/hardstyle / qdance@nimble.tools";
-			string data = wc.DownloadString(dataUrl);
+			Stages.Add(new() {
+				stage = "BLUE",
+				channel = "1120713989320609813",
+				emoji = "<:dq_blue:988094952280055808>",
+				url = "https://live.q-dance.com/",
+			});
+
+			Stages.Add(new() {
+				stage = "BLACK",
+				channel = "1120714004277510174",
+				emoji = "<:dq_black:988094951038537778>",
+				url = "https://live.q-dance.com/",
+			});
+
+			Stages.Add(new() {
+				stage = "UV",
+				channel = "1120714012204748931",
+				emoji = "<:dq_uv:988094948199006298>",
+				url = "https://live.q-dance.com/",
+			});
+
+			Stages.Add(new() {
+				stage = "YELLOW",
+				channel = "1120714035315363851",
+				emoji = "<:dq_yellow:988094949780246548>",
+				url = "https://live.q-dance.com/",
+			});
+
+			Stages.Add(new() {
+				stage = "INDIGO",
+				channel = "1120714048229617694",
+				emoji = "<:dq_indigo:988094943790792724>",
+				url = "https://live.q-dance.com/",
+			});
+
+			Stages.Add(new() {
+				stage = "MAGENTA",
+				channel = "1120714060355338310",
+				emoji = "<:dq_magenta:988094945057452203>",
+				url = "https://live.q-dance.com/",
+			});
+
+			Stages.Add(new() {
+				stage = "GOLD",
+				channel = "1120714070803366018",
+				emoji = "<:dq_gold:988094953903231036>",
+				url = "https://live.q-dance.com/",
+			});
+
+			Stages.Add(new() {
+				stage = "SILVER",
+				channel = "1120714083042336848",
+				emoji = "<:dq_silver:988094946756141156>",
+				url = "https://live.q-dance.com/",
+			});
+
+			Stages.Add(new() {
+				stage = "PURPLE",
+				channel = "1120714092060090429",
+				emoji = "<:dq_purple:988094360006574103>",
+				url = "https://live.q-dance.com/",
+			});
+
+			Stages.Add(new() {
+				stage = "GREEN",
+				channel = "1120714101354668123",
+				emoji = ":leafy_green:",
+				url = "https://live.q-dance.com/",
+			});
+
+			Stages.Add(new() {
+				stage = "ORANGE",
+				channel = "1120714108912799744",
+				emoji = ":orange_heart:",
+				url = "https://live.q-dance.com/",
+			});
+
+			// Download data
+			string dataUrl = @"https://dc9h6qmsoymbq.cloudfront.net/api/content/event-editions/141735599/timetable?id=141735599&version=2";
+
+			var hc = new HttpClient();
+			hc.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Reddit/Hardstyle, discord.gg/hardstyle, melissa@nimble.tools");
+			var res = await hc.GetAsync(dataUrl);
+			var data = await res.Content.ReadAsStringAsync();
 
 			// Parse data
 			var obj = JObject.Parse(data);
-			var objDays = obj.SelectToken("data.modules.timetable.data.eventEdition.days");
+			var objDays = obj.SelectToken("data");
 			foreach (var objDay in objDays) {
-				var date = EpochToDate((long)objDay.SelectToken("dateTimeStart"));
-				Console.WriteLine("{0} [ {1}, {2}, {3} ]", date.DayOfWeek, date.Year, date.Month, date.Day);
+				var dayOfWeek = (string)objDay.SelectToken("day");
+				var date = ((string)objDay.SelectToken("date")).Split("-");
+				var year = int.Parse(date[0]);
+				var month = int.Parse(date[1]);
+				var day = int.Parse(date[2]);
+				Console.WriteLine("{0} [ {1}, {2}, {3} ]", dayOfWeek, year, month, day);
 
 				var objStages = objDay.SelectToken("stages");
 				foreach (var objStage in objStages) {
 					var stageTitle = (string)objStage.SelectToken("title");
-					if (stageTitle == "BLUE AFTERPARTY") {
+					if (stageTitle == "BLUE NIGHT PARTY") {
 						stageTitle = "BLUE";
 					}
-					if (stageTitle == "MAGENTA AFTERPARY (SILENT)") {
+					if (stageTitle == "MAGENTA NIGHT PARTY (SILENT)" || stageTitle == "MAGENTA NIGHT PARTY (SILENT) HOSTED BY QULT") {
 						stageTitle = "MAGENTA";
 					}
-					if (stageTitle == "Heineken SILVER (SILENT)") {
+					if (stageTitle == "SILVER SILENT DISCO  HOSTED BY THE FUNKY CAT" || stageTitle == "SILVER SILENT DISCO") {
 						stageTitle = "SILVER";
+					}
+					if (stageTitle == "UV HOSTED BY DESPERADOS") {
+						stageTitle = "UV";
 					}
 
 					var stage = GetStage(stageTitle);
+					if (stage == null) {
+						Console.WriteLine("  {0} (not mapped to any stage)", stageTitle);
+						continue;
+					}
 					Console.WriteLine("  {0}", stageTitle);
 
-					// There's a sort order in the json, so let's use that for our export too (why not?)
-					stage.sortOrder = (int)objStage.SelectToken("sortOrder");
-
 					DateTime lastEndTime = EpochToDate(0);
-					var objTimeslots = objStage.SelectToken("timeSlots");
-					foreach (var objTimeslot in objTimeslots) {
-						var title = ((string)objTimeslot.SelectToken("title")).Trim();
+					var objPerformances = objStage.SelectToken("performances");
+					foreach (var objPerformance in objPerformances) {
+						var title = ((string)objPerformance.SelectToken("title")).Trim();
 
 						// Remove characters that mess with the formatting (remove instead of escape, because it'll make .find easier)
 						title = title.Replace("*", ""); // A*S*Y*S
@@ -117,18 +203,6 @@ namespace Qtimetable
 							title += " (Dr. Peacock, BillX, The Sickest Squad)";
 						}
 
-						// Vertile replaced Zatox
-						if (title == "Zatox") {
-							title = "Vertile";
-						}
-
-						// Crypsis and Donkey Rollers swapped slots
-						if (title == "Crypsis") {
-							title = "Donkey Rollers";
-						} else if (title == "Donkey Rollers") {
-							title = "Crypsis";
-						}
-
 						// Fix encoding
 						title = Encoding.UTF8.GetString(Encoding.Default.GetBytes(title));
 
@@ -143,8 +217,8 @@ namespace Qtimetable
 							continue;
 						}
 
-						var timeStart = EpochToDate((long)objTimeslot.SelectToken("dateTimeStart"));
-						var timeEnd = EpochToDate((long)objTimeslot.SelectToken("dateTimeEnd"));
+						var timeStart = (DateTime)objPerformance.SelectToken("start");
+						var timeEnd = (DateTime)objPerformance.SelectToken("end");
 
 						stage.sets.Add(new Set() {
 							name = title,
@@ -166,48 +240,6 @@ namespace Qtimetable
 				}
 			}
 
-			// Fill in any missing information
-			GetStage("RED").channel = "319525278978277407"; // #mainstage
-			GetStage("RED").emoji = "<:dq_red:988093668219031603>";
-			GetStage("RED").url = "https://library.q-dance.com/network/live/122407018";
-			GetStage("RED").responses["^\\.(yt|youtube)$"] = ":tv: Select streams might be live on the Q-dance YouTube channel: <https://www.youtube.com/c/qdance/live>";
-
-			GetStage("BLUE").channel = "989101395351318589";
-			GetStage("BLUE").emoji = "<:dq_blue:988094952280055808>";
-			GetStage("BLUE").url = "https://library.q-dance.com/network/live/122407020";
-
-			GetStage("BLACK").channel = "989101406025822329";
-			GetStage("BLACK").emoji = "<:dq_black:988094951038537778>";
-			GetStage("BLACK").url = "https://library.q-dance.com/network/live/122407023";
-
-			GetStage("UV").channel = "989101415228141578";
-			GetStage("UV").emoji = "<:dq_uv:988094948199006298>";
-			GetStage("UV").url = "https://library.q-dance.com/network/live/122407024";
-
-			GetStage("YELLOW").channel = "989102581232042035";
-			GetStage("YELLOW").emoji = "<:dq_yellow:988094949780246548>";
-			GetStage("YELLOW").url = "https://library.q-dance.com/network/live/122407044";
-
-			GetStage("INDIGO").channel = "989102615843450880";
-			GetStage("INDIGO").emoji = "<:dq_indigo:988094943790792724>";
-			GetStage("INDIGO").url = "https://library.q-dance.com/network/live/122407026";
-
-			GetStage("MAGENTA").channel = "989102625570041866";
-			GetStage("MAGENTA").emoji = "<:dq_magenta:988094945057452203>";
-			GetStage("MAGENTA").url = "https://library.q-dance.com/network/live/122407040";
-
-			GetStage("GOLD").channel = "989102635187576843";
-			GetStage("GOLD").emoji = "<:dq_gold:988094953903231036>";
-			GetStage("GOLD").url = "https://library.q-dance.com/network/live/122407042";
-
-			GetStage("SILVER").channel = "989102642808631357";
-			GetStage("SILVER").emoji = "<:dq_silver:988094946756141156>";
-			GetStage("SILVER").url = "https://library.q-dance.com/network/live/122407043";
-
-			GetStage("PURPLE").channel = "989102651864154122";
-			GetStage("PURPLE").emoji = "<:dq_purple:988094360006574103>";
-			GetStage("PURPLE").url = "https://library.q-dance.com/network/live/122407046";
-
 			// Remove stages that don't have a channel set
 			for (int i = Stages.Count - 1; i >= 0; i--) {
 				if (Stages[i].channel == "") {
@@ -223,8 +255,7 @@ namespace Qtimetable
 					"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or " +
 					"share recordings!";
 				stage.responses["^\\.(tickets|buy|paid)$"] =
-					":money_with_wings: This is a **paid** livestream. Buy tickets here: " +
-					"**<https://www.q-dance.com/en/events/defqon-1/defqon-1-weekend-festival-2022/livestream>**";
+					":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).";
 				stage.responses["^\\.(hidechat|removechat|fuckchat)$"] =
 					":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: " +
 					"```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");" +
@@ -234,21 +265,11 @@ namespace Qtimetable
 					":microphone2: The MC(s) on this stage: **" + stage.mc + "**";
 			}
 
-			// Sort stages
-			Stages.Sort((Stage a, Stage b) => {
-				if (a.sortOrder < b.sortOrder) {
-					return -1;
-				} else if (a.sortOrder > b.sortOrder) {
-					return 1;
-				}
-				return 0;
-			});
-
 			// Write to file
-			if (File.Exists("Defqon2022.json")) {
-				File.Delete("Defqon2022.json");
+			if (File.Exists("Defqon2023.json")) {
+				File.Delete("Defqon2023.json");
 			}
-			using (var writer = new StreamWriter("Defqon2022.json", false, Encoding.UTF8)) {
+			using (var writer = new StreamWriter("Defqon2023.json", false, Encoding.UTF8)) {
 				writer.NewLine = "\n";
 				writer.WriteLine("[");
 				for (int j = 0; j < Stages.Count; j++) {
@@ -259,7 +280,7 @@ namespace Qtimetable
 					writer.WriteLine("\t\t\"channel\": \"{0}\",", stage.channel);
 					writer.WriteLine("\t\t\"emoji\": \"{0}\",", stage.emoji);
 					writer.WriteLine("\t\t\"url\": \"{0}\",", stage.url);
-					writer.WriteLine("\t\t\"streamdelay\":2,");
+					writer.WriteLine("\t\t\"streamdelay\":0,");
 					writer.WriteLine("\t\t\"sets\": [");
 					for (int i = 0; i < stage.sets.Count; i++) {
 						var set = stage.sets[i];
@@ -298,14 +319,14 @@ namespace Qtimetable
 			}
 
 			// Write Markdown table to file
-			if (File.Exists("Defqon2022.md")) {
-				File.Delete("Defqon2022.md");
+			if (File.Exists("Defqon2023.md")) {
+				File.Delete("Defqon2023.md");
 			}
-			using (var writer = new StreamWriter("Defqon2022.md", false, Encoding.UTF8)) {
+			using (var writer = new StreamWriter("Defqon2023.md", false, Encoding.UTF8)) {
 				writer.NewLine = "\n";
 
 				writer.WriteLine("# Schedule");
-				writer.WriteLine("This is the full timetable for the Defqon 2022 livestreams. I will keep it updated the best I can.");
+				writer.WriteLine("This is the full timetable for the Defqon 2023 livestreams. I will keep it updated the best I can.");
 				writer.WriteLine();
 
 				foreach (var stage in Stages) {
@@ -324,8 +345,6 @@ namespace Qtimetable
 					writer.WriteLine();
 				}
 			}
-
-			Console.ReadKey();
 		}
 	}
 }

@@ -190,7 +190,7 @@ namespace Qtimetable
 						title = title.Replace("*", ""); // A*S*Y*S
 
 						// Clarifications
-						if (title.StartsWith("2 ") && title.EndsWith(" 1")) {
+						if (title.StartsWith("2") && title.EndsWith("1")) {
 							title += " (Sound Rush & Atmozfears)";
 						}
 						if (title == "Ghost Stories") {

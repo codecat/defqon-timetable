@@ -151,7 +151,7 @@ Friday | 14:45 | Xception
 Friday | 15:15 | Audiotricz & Ecstatic present Progressive Hardstyle
 Friday | 15:45 | Bass Modulators
 Friday | 16:30 | The Pitcher Live
-Friday | 17:15 | 2▲1
+Friday | 17:15 | 2▲1 (Sound Rush & Atmozfears)
 Friday | 18:00 | B-Frontliner
 Friday | 18:45 | Primeshock presents Shockwork
 Friday | 19:30 | JDX Live

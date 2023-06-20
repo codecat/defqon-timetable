@@ -272,7 +272,7 @@ namespace Qtimetable
 			if (File.Exists("Defqon2023.json")) {
 				File.Delete("Defqon2023.json");
 			}
-			using (var writer = new StreamWriter("Defqon2023.json", false, Encoding.UTF8)) {
+			using (var writer = new StreamWriter("Defqon2023.json", false, new UTF8Encoding(false))) {
 				writer.NewLine = "\n";
 				writer.WriteLine("[");
 				for (int j = 0; j < Stages.Count; j++) {

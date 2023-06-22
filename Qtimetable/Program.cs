@@ -66,14 +66,14 @@ namespace Qtimetable
 				stage = "BLUE",
 				channel = "1120713989320609813",
 				emoji = "<:dq_blue:988094952280055808>",
-				url = "https://live.q-dance.com/",
+				url = "https://www.q-dance.com/network/live/149170193",
 			});
 
 			Stages.Add(new() {
 				stage = "BLACK",
 				channel = "1120714004277510174",
 				emoji = "<:dq_black:988094951038537778>",
-				url = "https://live.q-dance.com/",
+				url = "https://www.q-dance.com/network/live/149170342",
 			});
 
 			Stages.Add(new() {
@@ -94,14 +94,14 @@ namespace Qtimetable
 				stage = "INDIGO",
 				channel = "1120714048229617694",
 				emoji = "<:dq_indigo:988094943790792724>",
-				url = "https://live.q-dance.com/",
+				url = "https://www.q-dance.com/network/live/149170345",
 			});
 
 			Stages.Add(new() {
 				stage = "MAGENTA",
 				channel = "1120714060355338310",
 				emoji = "<:dq_magenta:988094945057452203>",
-				url = "https://live.q-dance.com/",
+				url = "https://www.q-dance.com/network/live/149170346",
 			});
 
 			Stages.Add(new() {
@@ -164,9 +164,9 @@ namespace Qtimetable
 					if (stageTitle == "BLUE NIGHT PARTY") {
 						stageTitle = "BLUE";
 					}
-					// if (stageTitle == "MAGENTA NIGHT PARTY (SILENT)" || stageTitle == "MAGENTA NIGHT PARTY (SILENT) HOSTED BY QULT") {
-					// 	stageTitle = "MAGENTA";
-					// }
+					if (stageTitle == "MAGENTA NIGHT PARTY (SILENT)" || stageTitle == "MAGENTA NIGHT PARTY (SILENT) HOSTED BY QULT") {
+						stageTitle = "MAGENTA";
+					}
 					if (stageTitle == "SILVER SILENT DISCO  HOSTED BY THE FUNKY CAT" || stageTitle == "SILVER SILENT DISCO") {
 						stageTitle = "SILVER";
 					}
@@ -272,11 +272,6 @@ namespace Qtimetable
 
 						var timeStart = (DateTime)objPerformance.SelectToken("start");
 						var timeEnd = (DateTime)objPerformance.SelectToken("end");
-
-						// Magenta on thursday is a silent disco which is likely not streamed
-						if (stageTitle == "MAGENTA" && timeStart < DateTime.Parse("2023-06-23T03:00:00+02:00")) {
-							continue;
-						}
 
 						numSets++;
 

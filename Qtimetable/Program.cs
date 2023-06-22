@@ -164,9 +164,9 @@ namespace Qtimetable
 					if (stageTitle == "BLUE NIGHT PARTY") {
 						stageTitle = "BLUE";
 					}
-					if (stageTitle == "MAGENTA NIGHT PARTY (SILENT)" || stageTitle == "MAGENTA NIGHT PARTY (SILENT) HOSTED BY QULT") {
-						stageTitle = "MAGENTA";
-					}
+					// if (stageTitle == "MAGENTA NIGHT PARTY (SILENT)" || stageTitle == "MAGENTA NIGHT PARTY (SILENT) HOSTED BY QULT") {
+					// 	stageTitle = "MAGENTA";
+					// }
 					if (stageTitle == "SILVER SILENT DISCO  HOSTED BY THE FUNKY CAT" || stageTitle == "SILVER SILENT DISCO") {
 						stageTitle = "SILVER";
 					}
@@ -174,6 +174,7 @@ namespace Qtimetable
 						stageTitle = "UV";
 					}
 
+					// Get stage and skip if it doesn't exist
 					var stage = GetStage(stageTitle);
 					if (stage == null) {
 						Console.WriteLine("  {0} (not mapped to any stage)", stageTitle);
@@ -183,6 +184,8 @@ namespace Qtimetable
 
 					DateTime lastEndTime = EpochToDate(0);
 					var objPerformances = objStage.SelectToken("performances");
+					var numSets = 0;
+
 					foreach (var objPerformance in objPerformances) {
 						var title = ((string)objPerformance.SelectToken("title")).Trim();
 
@@ -252,6 +255,7 @@ namespace Qtimetable
 								dateTime = DateTime.Parse("2023-06-22T22:45:00+02:00"),
 							});
 							lastEndTime = DateTime.Parse("2023-06-22T23:00:00+02:00");
+							numSets = stage.sets.Count;
 							continue;
 						}
 
@@ -269,6 +273,13 @@ namespace Qtimetable
 						var timeStart = (DateTime)objPerformance.SelectToken("start");
 						var timeEnd = (DateTime)objPerformance.SelectToken("end");
 
+						// Magenta on thursday is a silent disco which is likely not streamed
+						if (stageTitle == "MAGENTA" && timeStart < DateTime.Parse("2023-06-23T03:00:00+02:00")) {
+							continue;
+						}
+
+						numSets++;
+
 						stage.sets.Add(new Set() {
 							name = title,
 							dateTime = timeStart
@@ -280,19 +291,14 @@ namespace Qtimetable
 						}
 					}
 
-					// Add "Nothing" at the end of the day
-					stage.sets.Add(new Set() {
-						name = "",
-						dateTime = lastEndTime
-					});
+					// Add "Nothing" at the end of the day if there were any sets
+					if (numSets > 0) {
+						stage.sets.Add(new Set() {
+							name = "",
+							dateTime = lastEndTime
+						});
+					}
 					Console.WriteLine("    [ {0}, {1} ]: <Nothing>", lastEndTime.Hour, lastEndTime.Minute);
-				}
-			}
-
-			// Remove stages that don't have a channel set
-			for (int i = Stages.Count - 1; i >= 0; i--) {
-				if (Stages[i].channel == "") {
-					Stages.RemoveAt(i);
 				}
 			}
 

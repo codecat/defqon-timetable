@@ -290,13 +290,6 @@ Watch live: https://live.q-dance.com/
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
-Thursday | 18:15 | Break of Dawn
-Thursday | 19:15 | ANDY SVGE
-Thursday | 20:15 | Toneshifterz
-Thursday | 21:30 | Ecstatic
-Thursday | 22:45 | Max Enforcer
-Friday | 00:00 | Classics by Surprise
-Friday | 02:00 | 
 Friday | 11:00 | Prefix & Density
 Friday | 12:00 | Artifact
 Friday | 13:00 | Degos & Re-Done
@@ -310,11 +303,6 @@ Friday | 19:45 | E-Force
 Friday | 20:30 | Chris One
 Friday | 21:15 | Main Concern
 Friday | 22:00 | 
-Friday | 23:00 | REVIVE
-Friday | 23:30 | Primeshock
-Saturday | 00:00 | The Darkraver & Hans Glock
-Saturday | 00:30 | Blame Noise
-Saturday | 01:00 | 
 Saturday | 11:00 | Sunny D
 Saturday | 12:30 | Balistic
 Saturday | 14:00 | DJ Thera & Geck-o
@@ -326,10 +314,6 @@ Saturday | 19:00 | Deepack & Luna
 Saturday | 20:30 | Donkey Rollers LIVE
 Saturday | 21:00 | Alpha Twins
 Saturday | 22:00 | 
-Saturday | 23:00 | Geck-o
-Saturday | 23:30 | Creeds
-Sunday | 00:15 | MØSCARDO & XRTN
-Sunday | 01:00 | 
 Sunday | 11:00 | Omegatypez
 Sunday | 12:00 | Lip DJ presents World Of Hardstyle
 Sunday | 13:00 | Waverider

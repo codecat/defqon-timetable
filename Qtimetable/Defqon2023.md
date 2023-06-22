@@ -239,7 +239,16 @@ Watch live: https://live.q-dance.com/
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
-Thursday | 18:15 | APEX presents The Brotherhood
+Thursday | 18:15 | Cryex
+Thursday | 18:45 | Cryex vs Vexxed
+Thursday | 19:15 | Vexxed
+Thursday | 19:45 | Vasto
+Thursday | 20:15 | Vasto vs Oxya
+Thursday | 20:45 | Oxya
+Thursday | 21:15 | Kenai
+Thursday | 21:45 | Kenai vs Scarra
+Thursday | 22:15 | Scarra
+Thursday | 22:45 | Apex The Brotherhood
 Thursday | 23:00 | 
 Friday | 11:00 | K1
 Friday | 12:00 | Sins Of Insanity

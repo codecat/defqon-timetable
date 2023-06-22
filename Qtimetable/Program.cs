@@ -209,6 +209,52 @@ namespace Qtimetable
 						// Fix encoding
 						title = Encoding.UTF8.GetString(Encoding.Default.GetBytes(title));
 
+						// Special schedule for the APEX stage on Indigo
+						if (title == "APEX presents The Brotherhood") {
+							stage.sets.Add(new Set() {
+								name = "Cryex",
+								dateTime = DateTime.Parse("2023-06-22T18:15:00+02:00"),
+							});
+							stage.sets.Add(new Set() {
+								name = "Cryex vs Vexxed",
+								dateTime = DateTime.Parse("2023-06-22T18:45:00+02:00"),
+							});
+							stage.sets.Add(new Set() {
+								name = "Vexxed",
+								dateTime = DateTime.Parse("2023-06-22T19:15:00+02:00"),
+							});
+							stage.sets.Add(new Set() {
+								name = "Vasto",
+								dateTime = DateTime.Parse("2023-06-22T19:45:00+02:00"),
+							});
+							stage.sets.Add(new Set() {
+								name = "Vasto vs Oxya",
+								dateTime = DateTime.Parse("2023-06-22T20:15:00+02:00"),
+							});
+							stage.sets.Add(new Set() {
+								name = "Oxya",
+								dateTime = DateTime.Parse("2023-06-22T20:45:00+02:00"),
+							});
+							stage.sets.Add(new Set() {
+								name = "Kenai",
+								dateTime = DateTime.Parse("2023-06-22T21:15:00+02:00"),
+							});
+							stage.sets.Add(new Set() {
+								name = "Kenai vs Scarra",
+								dateTime = DateTime.Parse("2023-06-22T21:45:00+02:00"),
+							});
+							stage.sets.Add(new Set() {
+								name = "Scarra",
+								dateTime = DateTime.Parse("2023-06-22T22:15:00+02:00"),
+							});
+							stage.sets.Add(new Set() {
+								name = "Apex The Brotherhood",
+								dateTime = DateTime.Parse("2023-06-22T22:45:00+02:00"),
+							});
+							lastEndTime = DateTime.Parse("2023-06-22T23:00:00+02:00");
+							continue;
+						}
+
 						// The MC for a stage has its own "timeslot" prefixed with "hosted by", so we catch that here
 						if (title.ToLower().StartsWith("hosted by ")) {
 							var host = title.Substring("hosted by ".Length);

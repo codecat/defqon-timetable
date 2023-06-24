@@ -2,7 +2,7 @@
 This is the full timetable for the Defqon 2023 livestreams. I will keep it updated the best I can.
 
 ## RED
-Watch live: https://live.q-dance.com/
+Watch live: https://www.q-dance.com/network/live/149170423
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
@@ -37,7 +37,7 @@ Sunday | 22:00 | DJ The Prophet - From the Hard "The Final"
 Sunday | 22:50 | The Closing Ritual
 
 ## BLUE
-Watch live: https://www.q-dance.com/network/live/149170193
+Watch live: https://www.q-dance.com/network/live/149170426
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
@@ -92,7 +92,7 @@ Sunday | 21:00 | E-Force
 Sunday | 22:00 | Sickmode
 
 ## BLACK
-Watch live: https://www.q-dance.com/network/live/149170342
+Watch live: https://www.q-dance.com/network/live/149170431
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
@@ -138,7 +138,7 @@ Sunday | 18:00 | Deadly Guns
 Sunday | 19:00 | Dr. Peacock
 
 ## UV
-Watch live: https://live.q-dance.com/
+Watch live: https://www.q-dance.com/network/live/149170433
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
@@ -189,7 +189,7 @@ Sunday | 21:15 | JeBroer 4 Ever Experience
 Sunday | 22:00 | Paul Elstak
 
 ## YELLOW
-Watch live: https://live.q-dance.com/
+Watch live: https://www.q-dance.com/network/live/149170445
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
@@ -235,7 +235,7 @@ Sunday | 20:30 | Noisekick
 Sunday | 21:15 | HKV Live
 
 ## INDIGO
-Watch live: https://www.q-dance.com/network/live/149170345
+Watch live: https://www.q-dance.com/network/live/149170441
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
@@ -286,7 +286,7 @@ Sunday | 18:00 | Unresolved
 Sunday | 19:00 | Spoontechnicians
 
 ## MAGENTA
-Watch live: https://www.q-dance.com/network/live/149170346
+Watch live: https://www.q-dance.com/network/live/149170444
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
@@ -342,7 +342,7 @@ Sunday | 18:30 | Frequencerz Live
 Sunday | 19:00 | Zany "25 Years"
 
 ## GOLD
-Watch live: https://live.q-dance.com/
+Watch live: https://www.q-dance.com/network/live/149170446
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
@@ -379,7 +379,7 @@ Sunday | 18:00 | Tha Playah
 Sunday | 19:00 | Ophidian & The Outside Agency
 
 ## SILVER
-Watch live: https://live.q-dance.com/
+Watch live: https://www.q-dance.com/network/live/149170452
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
@@ -418,7 +418,7 @@ Sunday | 18:00 | Mad Dog Downtempo set
 Sunday | 19:00 | I:GOR
 
 ## PURPLE
-Watch live: https://live.q-dance.com/
+Watch live: https://www.q-dance.com/network/live/149170449
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
@@ -451,7 +451,7 @@ Sunday | 18:30 | Griever
 Sunday | 19:15 | Tanukichi
 
 ## GREEN
-Watch live: https://live.q-dance.com/
+Watch live: https://www.q-dance.com/network/live/149170399
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--
@@ -468,7 +468,7 @@ Friday | 21:00 | Ghost in the Machine
 Friday | 22:00 | Somniac One
 
 ## ORANGE
-Watch live: https://live.q-dance.com/
+Watch live: https://www.q-dance.com/network/live/149170415
 
 Day | Time ([CEST](https://time.is/CEST)) | Set
 --|--|--

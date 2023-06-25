@@ -59,84 +59,70 @@ namespace Qtimetable
 				stage = "RED",
 				channel = "1120713959763357706",
 				emoji = "<:dq_red:988093668219031603>",
-				url = "https://www.q-dance.com/network/live/149170423",
+				url = "https://www.q-dance.com/network/live/149170455",
 			});
 
 			Stages.Add(new() {
 				stage = "BLUE",
 				channel = "1120713989320609813",
 				emoji = "<:dq_blue:988094952280055808>",
-				url = "https://www.q-dance.com/network/live/149170426",
+				url = "https://www.q-dance.com/network/live/149170459",
 			});
 
 			Stages.Add(new() {
 				stage = "BLACK",
 				channel = "1120714004277510174",
 				emoji = "<:dq_black:988094951038537778>",
-				url = "https://www.q-dance.com/network/live/149170431",
+				url = "https://www.q-dance.com/network/live/149170977",
 			});
 
 			Stages.Add(new() {
 				stage = "UV",
 				channel = "1120714012204748931",
 				emoji = "<:dq_uv:988094948199006298>",
-				url = "https://www.q-dance.com/network/live/149170433",
+				url = "https://www.q-dance.com/network/live/149170978",
 			});
 
 			Stages.Add(new() {
 				stage = "YELLOW",
 				channel = "1120714035315363851",
 				emoji = "<:dq_yellow:988094949780246548>",
-				url = "https://www.q-dance.com/network/live/149170445",
+				url = "https://www.q-dance.com/network/live/149171380",
 			});
 
 			Stages.Add(new() {
 				stage = "INDIGO",
 				channel = "1120714048229617694",
 				emoji = "<:dq_indigo:988094943790792724>",
-				url = "https://www.q-dance.com/network/live/149170441",
+				url = "https://www.q-dance.com/network/live/149170982",
 			});
 
 			Stages.Add(new() {
 				stage = "MAGENTA",
 				channel = "1120714060355338310",
 				emoji = "<:dq_magenta:988094945057452203>",
-				url = "https://www.q-dance.com/network/live/149170444",
+				url = "https://www.q-dance.com/network/live/149171377",
 			});
 
 			Stages.Add(new() {
 				stage = "GOLD",
 				channel = "1120714070803366018",
 				emoji = "<:dq_gold:988094953903231036>",
-				url = "https://www.q-dance.com/network/live/149170446",
+				url = "https://www.q-dance.com/network/live/149171383",
 			});
 
 			Stages.Add(new() {
 				stage = "SILVER",
 				channel = "1120714083042336848",
 				emoji = "<:dq_silver:988094946756141156>",
-				url = "https://www.q-dance.com/network/live/149170452",
+				url = "https://www.q-dance.com/network/live/149171387",
 			});
 
 			Stages.Add(new() {
 				stage = "PURPLE",
 				channel = "1120714092060090429",
 				emoji = "<:dq_purple:988094360006574103>",
-				url = "https://www.q-dance.com/network/live/149170449",
-			});
-
-			Stages.Add(new() {
-				stage = "GREEN",
-				channel = "1120714101354668123",
-				emoji = ":leafy_green:",
-				url = "https://www.q-dance.com/network/live/149170399",
-			});
-
-			Stages.Add(new() {
-				stage = "ORANGE",
-				channel = "1120714108912799744",
-				emoji = ":orange_heart:",
-				url = "https://www.q-dance.com/network/live/149170415",
+				url = "https://www.q-dance.com/network/live/149171385",
 			});
 
 			// Download data

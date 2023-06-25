@@ -3,7 +3,7 @@
 		"stage": "RED",
 		"channel": "1120713959763357706",
 		"emoji": "<:dq_red:988093668219031603>",
-		"url": "https://www.q-dance.com/network/live/149170423",
+		"url": "https://www.q-dance.com/network/live/149170455",
 		"streamdelay":0,
 		"sets": [
 			[ 2023, 6, 23, 13, 0, "The Opening Ceremony with Phuture Noize" ],
@@ -38,7 +38,7 @@
 				[ 2023, 6, 25, 23, 0 ]
 		],
 		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170423>**",
+			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170455>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
 			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
@@ -49,7 +49,7 @@
 		"stage": "BLUE",
 		"channel": "1120713989320609813",
 		"emoji": "<:dq_blue:988094952280055808>",
-		"url": "https://www.q-dance.com/network/live/149170426",
+		"url": "https://www.q-dance.com/network/live/149170459",
 		"streamdelay":0,
 		"sets": [
 			[ 2023, 6, 22, 18, 0, "Sub Zero Project" ],
@@ -104,7 +104,7 @@
 				[ 2023, 6, 25, 23, 0 ]
 		],
 		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170426>**",
+			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170459>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
 			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
@@ -115,7 +115,7 @@
 		"stage": "BLACK",
 		"channel": "1120714004277510174",
 		"emoji": "<:dq_black:988094951038537778>",
-		"url": "https://www.q-dance.com/network/live/149170431",
+		"url": "https://www.q-dance.com/network/live/149170977",
 		"streamdelay":0,
 		"sets": [
 			[ 2023, 6, 22, 18, 0, "Outsiders & Korsakoff" ],
@@ -161,7 +161,7 @@
 				[ 2023, 6, 25, 20, 0 ]
 		],
 		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170431>**",
+			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170977>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
 			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
@@ -172,7 +172,7 @@
 		"stage": "UV",
 		"channel": "1120714012204748931",
 		"emoji": "<:dq_uv:988094948199006298>",
-		"url": "https://www.q-dance.com/network/live/149170433",
+		"url": "https://www.q-dance.com/network/live/149170978",
 		"streamdelay":0,
 		"sets": [
 			[ 2023, 6, 23, 11, 0, "Envine" ],
@@ -223,7 +223,7 @@
 				[ 2023, 6, 25, 23, 0 ]
 		],
 		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170433>**",
+			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170978>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
 			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
@@ -234,7 +234,7 @@
 		"stage": "YELLOW",
 		"channel": "1120714035315363851",
 		"emoji": "<:dq_yellow:988094949780246548>",
-		"url": "https://www.q-dance.com/network/live/149170445",
+		"url": "https://www.q-dance.com/network/live/149171380",
 		"streamdelay":0,
 		"sets": [
 			[ 2023, 6, 23, 11, 0, "Neika" ],
@@ -280,7 +280,7 @@
 				[ 2023, 6, 25, 22, 0 ]
 		],
 		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170445>**",
+			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149171380>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
 			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
@@ -291,7 +291,7 @@
 		"stage": "INDIGO",
 		"channel": "1120714048229617694",
 		"emoji": "<:dq_indigo:988094943790792724>",
-		"url": "https://www.q-dance.com/network/live/149170441",
+		"url": "https://www.q-dance.com/network/live/149170982",
 		"streamdelay":0,
 		"sets": [
 			[ 2023, 6, 22, 18, 15, "Cryex" ],
@@ -342,7 +342,7 @@
 				[ 2023, 6, 25, 20, 0 ]
 		],
 		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170441>**",
+			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170982>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
 			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
@@ -353,7 +353,7 @@
 		"stage": "MAGENTA",
 		"channel": "1120714060355338310",
 		"emoji": "<:dq_magenta:988094945057452203>",
-		"url": "https://www.q-dance.com/network/live/149170444",
+		"url": "https://www.q-dance.com/network/live/149171377",
 		"streamdelay":0,
 		"sets": [
 			[ 2023, 6, 22, 18, 15, "Break of Dawn" ],
@@ -409,7 +409,7 @@
 				[ 2023, 6, 25, 20, 0 ]
 		],
 		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170444>**",
+			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149171377>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
 			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
@@ -420,7 +420,7 @@
 		"stage": "GOLD",
 		"channel": "1120714070803366018",
 		"emoji": "<:dq_gold:988094953903231036>",
-		"url": "https://www.q-dance.com/network/live/149170446",
+		"url": "https://www.q-dance.com/network/live/149171383",
 		"streamdelay":0,
 		"sets": [
 			[ 2023, 6, 23, 11, 0, "T-Go" ],
@@ -457,7 +457,7 @@
 				[ 2023, 6, 25, 20, 0 ]
 		],
 		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170446>**",
+			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149171383>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
 			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
@@ -468,7 +468,7 @@
 		"stage": "SILVER",
 		"channel": "1120714083042336848",
 		"emoji": "<:dq_silver:988094946756141156>",
-		"url": "https://www.q-dance.com/network/live/149170452",
+		"url": "https://www.q-dance.com/network/live/149171387",
 		"streamdelay":0,
 		"sets": [
 			[ 2023, 6, 23, 23, 0, "STOIK + bitface" ],
@@ -507,7 +507,7 @@
 				[ 2023, 6, 25, 20, 0 ]
 		],
 		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170452>**",
+			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149171387>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
 			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>"
@@ -517,7 +517,7 @@
 		"stage": "PURPLE",
 		"channel": "1120714092060090429",
 		"emoji": "<:dq_purple:988094360006574103>",
-		"url": "https://www.q-dance.com/network/live/149170449",
+		"url": "https://www.q-dance.com/network/live/149171385",
 		"streamdelay":0,
 		"sets": [
 			[ 2023, 6, 24, 12, 0, "Exodus" ],
@@ -550,59 +550,11 @@
 				[ 2023, 6, 25, 20, 0 ]
 		],
 		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170449>**",
+			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149171385>**",
 			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
 			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
 			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>",
 			"^\\.(mc|mcs)$":":microphone2: The MC(s) on this stage: **Flo & Synergy**"
-		}
-	},
-	{
-		"stage": "GREEN",
-		"channel": "1120714101354668123",
-		"emoji": ":leafy_green:",
-		"url": "https://www.q-dance.com/network/live/149170399",
-		"streamdelay":0,
-		"sets": [
-			[ 2023, 6, 23, 11, 0, "Geck-o" ],
-			[ 2023, 6, 23, 12, 0, "DAE" ],
-			[ 2023, 6, 23, 13, 0, "10 CLS" ],
-			[ 2023, 6, 23, 14, 30, "ALT8" ],
-			[ 2023, 6, 23, 16, 0, "Tham" ],
-			[ 2023, 6, 23, 17, 0, "Farrago" ],
-			[ 2023, 6, 23, 18, 0, "APHØTHIC" ],
-			[ 2023, 6, 23, 19, 0, "Brecc" ],
-			[ 2023, 6, 23, 20, 0, "Caravel" ],
-			[ 2023, 6, 23, 21, 0, "Ghost in the Machine" ],
-			[ 2023, 6, 23, 22, 0, "Somniac One" ],
-				[ 2023, 6, 23, 23, 0 ]
-		],
-		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170399>**",
-			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
-			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
-			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>"
-		}
-	},
-	{
-		"stage": "ORANGE",
-		"channel": "1120714108912799744",
-		"emoji": ":orange_heart:",
-		"url": "https://www.q-dance.com/network/live/149170415",
-		"streamdelay":0,
-		"sets": [
-			[ 2023, 6, 23, 12, 30, "Darzid b2b Misterius" ],
-			[ 2023, 6, 23, 14, 30, "Naadt" ],
-			[ 2023, 6, 23, 16, 0, "Lydia Nexus" ],
-			[ 2023, 6, 23, 18, 0, "Triptolemus" ],
-			[ 2023, 6, 23, 20, 0, "Shivanki" ],
-				[ 2023, 6, 23, 22, 25 ]
-		],
-		"responses": {
-			"^\\.(url|stream|link|watch)$":":tv: Tune in to the livestream here: **<https://www.q-dance.com/network/live/149170415>**",
-			"^\\.(recording|rec)$":"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or share recordings!",
-			"^\\.(tickets|buy|paid)$":":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).",
-			"^\\.(hidechat|removechat|fuckchat)$":":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: ```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: <https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>"
 		}
 	}
 ]

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -57,76 +58,97 @@ namespace Qtimetable
 			// Create stages with info that we care about
 			Stages.Add(new() {
 				stage = "RED",
-				channel = "1120713959763357706",
+				channel = "1255907527925694647",
 				emoji = "<:dq_red:988093668219031603>",
-				url = "https://www.q-dance.com/network/live/149170455",
+				url = "https://www.youtube.com/@qdance/live", //url = "https://www.q-dance.com/network/live/XrJOtVKCS-SEHMw8na-aZw",
 			});
 
 			Stages.Add(new() {
 				stage = "BLUE",
-				channel = "1120713989320609813",
+				channel = "1255643348719374416",
 				emoji = "<:dq_blue:988094952280055808>",
-				url = "https://www.q-dance.com/network/live/149170459",
+				url = "https://www.q-dance.com/network/live/OvNHoarMT7GqFVVzjz7fMA",
 			});
 
 			Stages.Add(new() {
 				stage = "BLACK",
-				channel = "1120714004277510174",
+				channel = "1255643386757644329",
 				emoji = "<:dq_black:988094951038537778>",
-				url = "https://www.q-dance.com/network/live/149170977",
+				url = "https://www.q-dance.com/network/live/cFpGZ0fhRHq9YY1sS5UJWg",
 			});
 
 			Stages.Add(new() {
 				stage = "UV",
-				channel = "1120714012204748931",
+				channel = "1255643421016588308",
 				emoji = "<:dq_uv:988094948199006298>",
-				url = "https://www.q-dance.com/network/live/149170978",
+				url = "https://www.q-dance.com/network/live/CxW1C2uQRT-sdI_f3N4eSA",
 			});
 
 			Stages.Add(new() {
 				stage = "YELLOW",
-				channel = "1120714035315363851",
+				channel = "1255643473336336517",
 				emoji = "<:dq_yellow:988094949780246548>",
-				url = "https://www.q-dance.com/network/live/149171380",
+				url = "https://www.q-dance.com/network/live/fBoPNbHmR_2JQPytjSAOog",
 			});
 
 			Stages.Add(new() {
 				stage = "INDIGO",
-				channel = "1120714048229617694",
+				channel = "1255643495314755675",
 				emoji = "<:dq_indigo:988094943790792724>",
-				url = "https://www.q-dance.com/network/live/149170982",
+				url = "https://www.q-dance.com/network/live/brwvXG1rT1CROi2371gZvg",
 			});
 
 			Stages.Add(new() {
 				stage = "MAGENTA",
-				channel = "1120714060355338310",
+				channel = "1255643533646233612",
 				emoji = "<:dq_magenta:988094945057452203>",
-				url = "https://www.q-dance.com/network/live/149171377",
+				url = "https://www.q-dance.com/network/live/NdnEdsGpR5aTvW9NcnJPRA",
 			});
 
 			Stages.Add(new() {
 				stage = "GOLD",
-				channel = "1120714070803366018",
+				channel = "1255643552965328908",
 				emoji = "<:dq_gold:988094953903231036>",
-				url = "https://www.q-dance.com/network/live/149171383",
+				url = "https://www.q-dance.com/network/live/XEMXr4qmTcmIjnhc6Gt8lg",
 			});
 
 			Stages.Add(new() {
 				stage = "SILVER",
-				channel = "1120714083042336848",
+				channel = "1255643588579168368",
 				emoji = "<:dq_silver:988094946756141156>",
-				url = "https://www.q-dance.com/network/live/149171387",
+				url = "https://www.q-dance.com/network/live/",
 			});
 
 			Stages.Add(new() {
 				stage = "PURPLE",
-				channel = "1120714092060090429",
+				channel = "1255643608942641234",
 				emoji = "<:dq_purple:988094360006574103>",
-				url = "https://www.q-dance.com/network/live/149171385",
+				url = "https://www.q-dance.com/network/live/NQgGcPY-ST29b4wvUolSNw",
+			});
+
+			Stages.Add(new() {
+				stage = "ORANGE",
+				channel = "1255643665984913461",
+				emoji = "<:defqon:438815618301427713>",
+				url = "https://www.q-dance.com/network/live/",
+			});
+
+			Stages.Add(new() {
+				stage = "GREEN",
+				channel = "1255643688311459941",
+				emoji = "<:defqon:438815618301427713>",
+				url = "https://www.q-dance.com/network/live/",
+			});
+
+			Stages.Add(new() {
+				stage = "WHITE",
+				channel = "1255643706204229675",
+				emoji = "<:defqon:438815618301427713>",
+				url = "https://www.q-dance.com/network/live/R0p-YfQfQAO_jmKv3CBtOQ",
 			});
 
 			// Download data
-			string dataUrl = @"https://dc9h6qmsoymbq.cloudfront.net/api/content/event-editions/141735599/timetable?id=141735599&version=2";
+			string dataUrl = @"https://dc9h6qmsoymbq.cloudfront.net/api/content/event-editions/151664587/timetable?version=2";
 
 			var hc = new HttpClient();
 			hc.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Reddit/Hardstyle, discord.gg/hardstyle, melissa@nimble.tools");
@@ -147,16 +169,18 @@ namespace Qtimetable
 				var objStages = objDay.SelectToken("stages");
 				foreach (var objStage in objStages) {
 					var stageTitle = (string)objStage.SelectToken("title");
-					if (stageTitle == "BLUE NIGHT PARTY") {
-						stageTitle = "BLUE";
+
+					// Not streamed.
+					if (stageTitle.Contains("NIGHT PARTY")) {
+						continue;
 					}
-					if (stageTitle == "MAGENTA NIGHT PARTY (SILENT)" || stageTitle == "MAGENTA NIGHT PARTY (SILENT) HOSTED BY QULT") {
-						stageTitle = "MAGENTA";
-					}
-					if (stageTitle == "SILVER SILENT DISCO  HOSTED BY THE FUNKY CAT" || stageTitle == "SILVER SILENT DISCO") {
-						stageTitle = "SILVER";
-					}
-					if (stageTitle == "UV HOSTED BY DESPERADOS") {
+
+					stageTitle = stageTitle.Replace(" (SILENT)", "");
+					stageTitle = Regex.Replace(stageTitle, @" HOSTED BY .*$", "");
+
+					if (stageTitle.StartsWith("THE GATHERING (")) {
+						stageTitle = Regex.Match(stageTitle, @"^THE GATHERING \((.*)\)").Groups[1].Value;
+					} else if (stageTitle == "U.V.") {
 						stageTitle = "UV";
 					}
 
@@ -194,56 +218,24 @@ namespace Qtimetable
 						if (title == "3 Blokes") {
 							title += " (Code Black, Toneshifterz, Audiofreq)";
 						}
+						if (title.StartsWith("GPF ")) {
+							title = "GPF <http://www.gpfpreswediditthisisthemainstage.gov/thepiepshowlive2024>";
+						}
+						if (title == "Superior Core") {
+							title += " (Soup Core)";
+						}
+						if (title == "Spoontechnicians") {
+							title += " (Chapter V, Faceless, Mortis, New Act, Phantom, Posyden, Repeller, The Smiler, MC Barricade)";
+						}
+						if (title == "Classics by Surprise") {
+							title = "Classics by Luna, ANDY SVGE, and Deepack";
+						}
+						if (title == "Zatox") {
+							title = "Tatanka (Replaces Zatox)";
+						}
 
 						// Fix encoding
 						title = Encoding.UTF8.GetString(Encoding.Default.GetBytes(title));
-
-						// Special schedule for the APEX stage on Indigo
-						if (title == "APEX presents The Brotherhood") {
-							stage.sets.Add(new Set() {
-								name = "Cryex",
-								dateTime = DateTime.Parse("2023-06-22T18:15:00+02:00"),
-							});
-							stage.sets.Add(new Set() {
-								name = "Cryex vs Vexxed",
-								dateTime = DateTime.Parse("2023-06-22T18:45:00+02:00"),
-							});
-							stage.sets.Add(new Set() {
-								name = "Vexxed",
-								dateTime = DateTime.Parse("2023-06-22T19:15:00+02:00"),
-							});
-							stage.sets.Add(new Set() {
-								name = "Vasto",
-								dateTime = DateTime.Parse("2023-06-22T19:45:00+02:00"),
-							});
-							stage.sets.Add(new Set() {
-								name = "Vasto vs Oxya",
-								dateTime = DateTime.Parse("2023-06-22T20:15:00+02:00"),
-							});
-							stage.sets.Add(new Set() {
-								name = "Oxya",
-								dateTime = DateTime.Parse("2023-06-22T20:45:00+02:00"),
-							});
-							stage.sets.Add(new Set() {
-								name = "Kenai",
-								dateTime = DateTime.Parse("2023-06-22T21:15:00+02:00"),
-							});
-							stage.sets.Add(new Set() {
-								name = "Kenai vs Scarra",
-								dateTime = DateTime.Parse("2023-06-22T21:45:00+02:00"),
-							});
-							stage.sets.Add(new Set() {
-								name = "Scarra",
-								dateTime = DateTime.Parse("2023-06-22T22:15:00+02:00"),
-							});
-							stage.sets.Add(new Set() {
-								name = "Apex The Brotherhood",
-								dateTime = DateTime.Parse("2023-06-22T22:45:00+02:00"),
-							});
-							lastEndTime = DateTime.Parse("2023-06-22T23:00:00+02:00");
-							numSets = stage.sets.Count;
-							continue;
-						}
 
 						// The MC for a stage has its own "timeslot" prefixed with "hosted by", so we catch that here
 						if (title.ToLower().StartsWith("hosted by ")) {
@@ -283,15 +275,21 @@ namespace Qtimetable
 				}
 			}
 
+			foreach (var stage in Stages) {
+				if (stage.sets.Count == 0) {
+					Console.WriteLine($"-- WARNING: Stage {stage.stage} has no sets!");
+				}
+			}
+
 			// Add common responses to all stages
 			foreach (var stage in Stages) {
 				stage.responses["^\\.(url|stream|link|watch)$"] =
 					":tv: Tune in to the livestream here: **<" + stage.url + ">**";
 				stage.responses["^\\.(recording|rec)$"] =
-					"<:police:359836811285102593> Recording is considered piracy which is against the rules. Do not ask for or " +
+					"<:police:359836811285102593> Recording any of the paid streams is considered piracy which is against the rules. Do not ask for or " +
 					"share recordings!";
 				stage.responses["^\\.(tickets|buy|paid)$"] =
-					":money_with_wings: This is a **paid** livestream. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>) OR a pay-per-view ticket (<http://bit.ly/DQ1-PPV>).";
+					":money_with_wings: The non-YouTube streams are **paid** livestreams. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>).";
 				stage.responses["^\\.(hidechat|removechat|fuckchat)$"] =
 					":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: " +
 					"```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");" +
@@ -305,10 +303,10 @@ namespace Qtimetable
 			}
 
 			// Write to file
-			if (File.Exists("Defqon2023.json")) {
-				File.Delete("Defqon2023.json");
+			if (File.Exists("Defqon2024.json")) {
+				File.Delete("Defqon2024.json");
 			}
-			using (var writer = new StreamWriter("Defqon2023.json", false, new UTF8Encoding(false))) {
+			using (var writer = new StreamWriter("Defqon2024.json", false, new UTF8Encoding(false))) {
 				writer.NewLine = "\n";
 				writer.WriteLine("[");
 				for (int j = 0; j < Stages.Count; j++) {
@@ -358,14 +356,14 @@ namespace Qtimetable
 			}
 
 			// Write Markdown table to file
-			if (File.Exists("Defqon2023.md")) {
-				File.Delete("Defqon2023.md");
+			if (File.Exists("Defqon2024.md")) {
+				File.Delete("Defqon2024.md");
 			}
-			using (var writer = new StreamWriter("Defqon2023.md", false, Encoding.UTF8)) {
+			using (var writer = new StreamWriter("Defqon2024.md", false, Encoding.UTF8)) {
 				writer.NewLine = "\n";
 
 				writer.WriteLine("# Schedule");
-				writer.WriteLine("This is the full timetable for the Defqon 2023 livestreams. I will keep it updated the best I can.");
+				writer.WriteLine("This is the full timetable for the Defqon 2024 livestreams. I will keep it updated the best I can.");
 				writer.WriteLine();
 
 				foreach (var stage in Stages) {
@@ -386,14 +384,14 @@ namespace Qtimetable
 			}
 
 			// Write Reddit link list to file
-			if (File.Exists("Defqon2023Reddit.md")) {
-				File.Delete("Defqon2023Reddit.md");
+			if (File.Exists("Defqon2024Reddit.md")) {
+				File.Delete("Defqon2024Reddit.md");
 			}
-			using (var writer = new StreamWriter("Defqon2023Reddit.md", false, Encoding.UTF8)) {
+			using (var writer = new StreamWriter("Defqon2024Reddit.md", false, Encoding.UTF8)) {
 				writer.NewLine = "\n";
 
 				foreach (var stage in Stages) {
-					if (stage.stage == "RED" || stage.stage == "BLUE" || stage.stage == "BLACK" || stage.stage == "UV") {
+					if (stage.stage == "RED") {
 						writer.Write("  * 🎥 ");
 					} else {
 						writer.Write("  * 📻 ");

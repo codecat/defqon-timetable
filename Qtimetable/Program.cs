@@ -2,14 +2,108 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
-using System.Text.RegularExpressions;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 
 namespace Qtimetable;
+
+public class GraphQLQuery(string query)
+{
+	[JsonPropertyName("query")]
+	public string Query { get; } = query;
+}
+
+public class QdanceGraphQLResponse
+{
+	public static readonly string Query = @"{
+	event {
+		eventName
+		editions {
+			name
+			_allReferencingEventEditionDays(orderBy: date_ASC) {
+				name date
+				_allReferencingEventEditionStageDays {
+					cmsName
+					stage { name }
+					performances {
+						startTime endTime
+						name
+						host
+					}
+				}
+			}
+		}
+	}
+}";
+
+	[JsonPropertyName("data")]
+	public DataResponse Data { get; set; }
+	public class DataResponse
+	{
+		[JsonPropertyName("event")]
+		public EventResponse Event { get; set; }
+		public class EventResponse
+		{
+			[JsonPropertyName("eventName")]
+			public string EventName { get; set; }
+
+			[JsonPropertyName("editions")]
+			public EventEditionResponse[] Editions { get; set; }
+			public class EventEditionResponse
+			{
+				[JsonPropertyName("name")]
+				public string Name { get; set; }
+
+				[JsonPropertyName("_allReferencingEventEditionDays")]
+				public EventEditionDayResponse[] Days { get; set; }
+				public class EventEditionDayResponse
+				{
+					[JsonPropertyName("name")]
+					public string Name { get; set; }
+
+					[JsonPropertyName("date")]
+					public string Date { get; set; }
+
+					[JsonPropertyName("_allReferencingEventEditionStageDays")]
+					public EventEditionStageDayResponse[] StageDays { get; set; }
+					public class EventEditionStageDayResponse
+					{
+						[JsonPropertyName("cmsName")]
+						public string CmsName { get; set; }
+
+						[JsonPropertyName("stage")]
+						public StageResponse Stage { get; set; }
+						public class StageResponse
+						{
+							[JsonPropertyName("name")]
+							public string Name { get; set; }
+						}
+
+						[JsonPropertyName("performances")]
+						public PerformanceResponse[] Performances { get; set; }
+						public class PerformanceResponse
+						{
+							[JsonPropertyName("startTime")]
+							public DateTime? StartTime { get; set; }
+
+							[JsonPropertyName("endTime")]
+							public DateTime? EndTime { get; set; }
+
+							[JsonPropertyName("name")]
+							public string Name { get; set; }
+
+							[JsonPropertyName("host")]
+							public bool Host { get; set; }
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 public class Set
 {
@@ -30,12 +124,12 @@ public class Stage
 
 class Program
 {
-	private static List<Stage> Stages = new List<Stage>();
+	private static readonly List<Stage> Stages = [];
 
 	private static Stage GetStage(string name)
 	{
 		foreach (var stage in Stages) {
-			if (stage.stage == name) {
+			if (stage.stage.Equals(name, StringComparison.InvariantCultureIgnoreCase)) {
 				return stage;
 			}
 		}
@@ -57,209 +151,166 @@ class Program
 		// Create stages with info that we care about
 		Stages.Add(new() {
 			stage = "RED",
-			channel = "1255907527925694647",
+			channel = "319525278978277407",
 			emoji = "<:dq_red:988093668219031603>",
-			url = "https://www.youtube.com/@qdance/live", //url = "https://www.q-dance.com/network/live/XrJOtVKCS-SEHMw8na-aZw",
+			url = "https://www.youtube.com/@qdance/live",
 		});
 
 		Stages.Add(new() {
 			stage = "BLUE",
-			channel = "1255643348719374416",
+			channel = "1387348870295457852",
 			emoji = "<:dq_blue:988094952280055808>",
-			url = "https://www.q-dance.com/network/live/OvNHoarMT7GqFVVzjz7fMA",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
 		});
 
 		Stages.Add(new() {
 			stage = "BLACK",
-			channel = "1255643386757644329",
+			channel = "1387348902914818170",
 			emoji = "<:dq_black:988094951038537778>",
-			url = "https://www.q-dance.com/network/live/cFpGZ0fhRHq9YY1sS5UJWg",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
 		});
 
 		Stages.Add(new() {
-			stage = "UV",
-			channel = "1255643421016588308",
+			stage = "U.V.",
+			channel = "1387348921256382517",
 			emoji = "<:dq_uv:988094948199006298>",
-			url = "https://www.q-dance.com/network/live/CxW1C2uQRT-sdI_f3N4eSA",
-		});
-
-		Stages.Add(new() {
-			stage = "YELLOW",
-			channel = "1255643473336336517",
-			emoji = "<:dq_yellow:988094949780246548>",
-			url = "https://www.q-dance.com/network/live/fBoPNbHmR_2JQPytjSAOog",
-		});
-
-		Stages.Add(new() {
-			stage = "INDIGO",
-			channel = "1255643495314755675",
-			emoji = "<:dq_indigo:988094943790792724>",
-			url = "https://www.q-dance.com/network/live/brwvXG1rT1CROi2371gZvg",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
 		});
 
 		Stages.Add(new() {
 			stage = "MAGENTA",
-			channel = "1255643533646233612",
+			channel = "1387348935785582602",
 			emoji = "<:dq_magenta:988094945057452203>",
-			url = "https://www.q-dance.com/network/live/NdnEdsGpR5aTvW9NcnJPRA",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
+		});
+
+		Stages.Add(new() {
+			stage = "INDIGO",
+			channel = "1387348951346450432",
+			emoji = "<:dq_indigo:988094943790792724>",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
 		});
 
 		Stages.Add(new() {
 			stage = "GOLD",
-			channel = "1255643552965328908",
+			channel = "1387348963191164939",
 			emoji = "<:dq_gold:988094953903231036>",
-			url = "https://www.q-dance.com/network/live/XEMXr4qmTcmIjnhc6Gt8lg",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
 		});
 
 		Stages.Add(new() {
-			stage = "SILVER",
-			channel = "1255643588579168368",
-			emoji = "<:dq_silver:988094946756141156>",
-			url = "https://www.q-dance.com/network/live/",
-		});
-
-		Stages.Add(new() {
-			stage = "PURPLE",
-			channel = "1255643608942641234",
-			emoji = "<:dq_purple:988094360006574103>",
-			url = "https://www.q-dance.com/network/live/NQgGcPY-ST29b4wvUolSNw",
-		});
-
-		Stages.Add(new() {
-			stage = "ORANGE",
-			channel = "1255643665984913461",
-			emoji = "<:defqon:438815618301427713>",
-			url = "https://www.q-dance.com/network/live/",
+			stage = "YELLOW",
+			channel = "1387348977573298186",
+			emoji = "<:dq_yellow:988094949780246548>",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
 		});
 
 		Stages.Add(new() {
 			stage = "GREEN",
-			channel = "1255643688311459941",
-			emoji = "<:defqon:438815618301427713>",
-			url = "https://www.q-dance.com/network/live/",
+			channel = "1387348989808082995",
+			emoji = "<:dq_green:1387365970779050064>",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
+		});
+
+		Stages.Add(new() {
+			stage = "PINK",
+			channel = "1387349000184922172",
+			emoji = "<:dq_pink:1387365972502908929>",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
+		});
+
+		Stages.Add(new() {
+			stage = "PURPLE",
+			channel = "1387349012910313584",
+			emoji = "<:dq_purple:988094360006574103>",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
+		});
+
+		Stages.Add(new() {
+			stage = "ORANGE",
+			channel = "1387349023354261515",
+			emoji = "<:qdance:700038070594043986>",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
 		});
 
 		Stages.Add(new() {
 			stage = "WHITE",
-			channel = "1255643706204229675",
-			emoji = "<:defqon:438815618301427713>",
-			url = "https://www.q-dance.com/network/live/R0p-YfQfQAO_jmKv3CBtOQ",
+			channel = "1387349040651305041",
+			emoji = "<:dq_white:1387378251562745906>",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
+		});
+
+		Stages.Add(new() {
+			stage = "SILVER",
+			channel = "1387349050478690356",
+			emoji = "<:dq_silver:988094946756141156>",
+			url = "https://www.q-dance.com/l/defqon1-2025-audiostreams",
 		});
 
 		// Download data
-		string dataUrl = @"https://dc9h6qmsoymbq.cloudfront.net/api/content/event-editions/151664587/timetable?version=2";
-
 		var hc = new HttpClient();
 		hc.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Reddit/Hardstyle, discord.gg/hardstyle, melissa@nimble.tools");
-		var res = await hc.GetAsync(dataUrl);
-		var data = await res.Content.ReadAsStringAsync();
+		var res = await hc.PostAsJsonAsync<GraphQLQuery>("https://www.q-dance.com/graphql/", new(QdanceGraphQLResponse.Query));
+		var data = await res.Content.ReadFromJsonAsync<QdanceGraphQLResponse>();
 
 		// Parse data
-		var obj = JObject.Parse(data);
-		var objDays = obj.SelectToken("data");
-		foreach (var objDay in objDays) {
-			var dayOfWeek = (string)objDay.SelectToken("day");
-			var date = ((string)objDay.SelectToken("date")).Split("-");
+		foreach (var editionDay in data.Data.Event.Editions[0].Days) {
+			var date = editionDay.Date.Split('-');
 			var year = int.Parse(date[0]);
 			var month = int.Parse(date[1]);
 			var day = int.Parse(date[2]);
-			Console.WriteLine("{0} [ {1}, {2}, {3} ]", dayOfWeek, year, month, day);
+			Console.WriteLine($"{editionDay.Name} [ {year}, {month}, {day} ]");
 
-			var objStages = objDay.SelectToken("stages");
-			foreach (var objStage in objStages) {
-				var stageTitle = (string)objStage.SelectToken("title");
-
-				// Not streamed.
-				if (stageTitle.Contains("NIGHT PARTY")) {
-					continue;
+			foreach (var stageDay in editionDay.StageDays) {
+				// 1 space = black, 2 spaces = indigo, no spaces = blue
+				if (stageDay.Stage.Name == "The Gathering") {
+					stageDay.Stage.Name = "Blue";
+				} else if (stageDay.Stage.Name == "The Gathering ") {
+					stageDay.Stage.Name = "Black";
+				} else if (stageDay.Stage.Name == "The Gathering  ") {
+					stageDay.Stage.Name = "Indigo";
+				} else if (stageDay.Stage.Name == "The Closing Ceremony") {
+					stageDay.Stage.Name = "Red";
 				}
 
-				stageTitle = stageTitle.Replace(" (SILENT)", "");
-				stageTitle = Regex.Replace(stageTitle, @" HOSTED BY .*$", "");
-
-				if (stageTitle.StartsWith("THE GATHERING (")) {
-					stageTitle = Regex.Match(stageTitle, @"^THE GATHERING \((.*)\)").Groups[1].Value;
-				} else if (stageTitle == "U.V.") {
-					stageTitle = "UV";
+				if (stageDay.Stage.Name.EndsWith(" Silent")) {
+					stageDay.Stage.Name = stageDay.Stage.Name[..^7];
+				}
+				if (stageDay.Stage.Name.EndsWith(" Night")) {
+					stageDay.Stage.Name = stageDay.Stage.Name[..^6];
 				}
 
-				// Get stage and skip if it doesn't exist
-				var stage = GetStage(stageTitle);
+				string logStage = $"  \"{stageDay.Stage.Name}\" ({stageDay.CmsName})";
+
+				var stage = GetStage(stageDay.Stage.Name);
 				if (stage == null) {
-					Console.WriteLine("  {0} (not mapped to any stage)", stageTitle);
+					Console.WriteLine($"  {logStage} (not mapped to any stage)");
 					continue;
 				}
-				Console.WriteLine("  {0}", stageTitle);
+				Console.WriteLine($"  {logStage}");
 
 				DateTime lastEndTime = EpochToDate(0);
-				var objPerformances = objStage.SelectToken("performances");
 				var numSets = 0;
 
-				foreach (var objPerformance in objPerformances) {
-					var title = ((string)objPerformance.SelectToken("title")).Trim();
+				foreach (var performance in stageDay.Performances) {
+					var title = performance.Name.Trim();
 
 					// Remove characters that mess with the formatting (remove instead of escape, because it'll make .find easier)
 					title = title.Replace("*", ""); // A*S*Y*S
 
-					// Clarifications
-					if (title.StartsWith("2") && title.EndsWith("1")) {
-						title += " (Sound Rush & Atmozfears)";
-					}
-					if (title == "Ghost Stories") {
-						title += " (D-Block & S-te-Fan)";
-					}
-					if (title == "De Nachtbrakers") {
-						title += " (Endymion, Degos & Re-Done, Bass Chaserz)";
-					}
-					if (title == "Frenchcore Familia") {
-						title += " (Dr. Peacock, BillX, The Sickest Squad)";
-					}
-					if (title == "3 Blokes") {
-						title += " (Code Black, Toneshifterz, Audiofreq)";
-					}
-					if (title.StartsWith("GPF ")) {
-						title = "GPF <http://www.gpfpreswediditthisisthemainstage.gov/thepiepshowlive2025>";
-					}
-					if (title == "Superior Core") {
-						title += " (Soup Core)";
-					}
-					if (title == "Spoontechnicians") {
-						title += " (Chapter V, Faceless, Mortis, New Act, Phantom, Posyden, Repeller, The Smiler, MC Barricade)";
-					}
-					if (title == "Classics by Surprise") {
-						title = "Classics by Luna, ANDY SVGE, and Deepack";
-					}
-					if (title == "Zatox") {
-						title = "Tatanka (Replaces Zatox)";
-					}
-
-					// Fix encoding
-					title = Encoding.UTF8.GetString(Encoding.Default.GetBytes(title));
-
-					// The MC for a stage has its own "timeslot" prefixed with "hosted by", so we catch that here
-					if (title.ToLower().StartsWith("hosted by ")) {
-						var host = title.Substring("hosted by ".Length);
-						if (stage.mc == "") {
-							stage.mc = host;
-						} else if (!stage.mc.Contains(host)) {
-							stage.mc += " & " + host;
-						}
+					if (performance.Host) {
+						stage.mc = title;
 						continue;
 					}
 
-					var timeStart = (DateTime)objPerformance.SelectToken("start");
-					var timeEnd = (DateTime)objPerformance.SelectToken("end");
-
 					numSets++;
-
 					stage.sets.Add(new Set() {
 						name = title,
-						dateTime = timeStart
+						dateTime = performance.StartTime.Value,
 					});
-					Console.WriteLine("    [ {0}, {1} ]: {2}", timeStart.Hour, timeStart.Minute, title);
 
-					if (timeEnd > lastEndTime) {
-						lastEndTime = timeEnd;
+					if (performance.EndTime > lastEndTime) {
+						lastEndTime = performance.EndTime.Value;
 					}
 				}
 
@@ -270,7 +321,6 @@ class Program
 						dateTime = lastEndTime
 					});
 				}
-				Console.WriteLine("    [ {0}, {1} ]: <Nothing>", lastEndTime.Hour, lastEndTime.Minute);
 			}
 		}
 
@@ -282,22 +332,15 @@ class Program
 
 		// Add common responses to all stages
 		foreach (var stage in Stages) {
-			stage.responses["^\\.(url|stream|link|watch)$"] =
-				":tv: Tune in to the livestream here: **<" + stage.url + ">**";
-			stage.responses["^\\.(recording|rec)$"] =
-				"<:police:359836811285102593> Recording any of the paid streams is considered piracy which is against the rules. Do not ask for or " +
-				"share recordings!";
-			stage.responses["^\\.(tickets|buy|paid)$"] =
-				":money_with_wings: The non-YouTube streams are **paid** livestreams. It requires a Dediqated membership (<http://bit.ly/DDQ-Membership>).";
-			stage.responses["^\\.(hidechat|removechat|fuckchat)$"] =
-				":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: " +
-				"```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");" +
-				"sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: " +
-				"<https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>";
+			stage.responses["^\\.(url|stream|link|watch)$"] = $":tv: Tune in to the livestream here: **<{stage.url}>**";
+			//stage.responses["^\\.(hidechat|removechat|fuckchat)$"] =
+			//	":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: " +
+			//	"```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");" +
+			//	"sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: " +
+			//	"<https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>";
 
 			if (stage.mc != "") {
-				stage.responses["^\\.(mc|mcs)$"] =
-					":microphone2: The MC(s) on this stage: **" + stage.mc + "**";
+				stage.responses["^\\.(mc|mcs)$"] = $":microphone2: The MC(s) on this stage: **{stage.mc}**";
 			}
 		}
 
@@ -398,5 +441,7 @@ class Program
 				writer.WriteLine("**{0}**: {1}", stage.stage, stage.url);
 			}
 		}
+
+		Console.ReadKey();
 	}
 }

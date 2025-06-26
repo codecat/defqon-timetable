@@ -107,6 +107,7 @@ public class QdanceGraphQLResponse
 
 public class Set
 {
+	public string reportedDay;
 	public DateTime dateTime;
 	public string name = "";
 }
@@ -306,6 +307,7 @@ class Program
 					numSets++;
 					stage.sets.Add(new Set() {
 						name = title,
+						reportedDay = editionDay.Name,
 						dateTime = performance.StartTime.Value,
 					});
 
@@ -405,7 +407,7 @@ class Program
 			writer.NewLine = "\n";
 
 			writer.WriteLine("# Schedule");
-			writer.WriteLine("This is the full timetable for the Defqon 2025 livestreams. I will keep it updated the best I can.");
+			writer.WriteLine("This is the full (expected) timetable for the Defqon.1 2025 livestreams. I will keep it updated the best I can. Please feel free to let me know if something is wrong or needs to be updated.");
 			writer.WriteLine();
 
 			foreach (var stage in Stages) {
@@ -414,15 +416,21 @@ class Program
 				writer.WriteLine();
 				writer.WriteLine("Day | Time ([CEST](https://time.is/CEST)) | Set");
 				writer.WriteLine("--|--|--");
+				string lastReportedDay = "";
 				for (int i = 0; i < stage.sets.Count; i++) {
 					var set = stage.sets[i];
-					if (set.name == "" && i == stage.sets.Count - 1) {
+					if (!string.IsNullOrEmpty(set.reportedDay)) {
+						lastReportedDay = set.reportedDay;
+					}
+					if (string.IsNullOrEmpty(set.name) && i == stage.sets.Count - 1) {
 						continue;
 					}
-					writer.WriteLine("{0} | {1} | {2}", set.dateTime.ToString("dddd"), set.dateTime.ToString("HH:mm"), set.name);
+					writer.WriteLine("{0} | {1} | {2}", lastReportedDay, set.dateTime.ToString("HH:mm"), set.name);
 				}
 				writer.WriteLine();
 			}
+
+			writer.WriteLine("(Data pulled with [github.com/codecat/defqon-timetable](https://github.com/codecat/defqon-timetable))");
 		}
 
 		// Write Reddit link list to file

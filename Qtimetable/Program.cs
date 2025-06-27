@@ -339,9 +339,20 @@ class Program
 		}
 
 		foreach (var stage in Stages) {
+			// Warn on empty stages
 			if (stage.sets.Count == 0) {
 				Console.WriteLine($"-- WARNING: Stage {stage.stage} has no sets!");
 			}
+
+			// Sort sets again
+			stage.sets.Sort((a, b) => {
+				if (a.dateTime > b.dateTime) {
+					return 1;
+				} else if (a.dateTime < b.dateTime) {
+					return -1;
+				}
+				return 0;
+			});
 		}
 
 		// Add common responses to all stages

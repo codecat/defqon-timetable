@@ -300,7 +300,7 @@ class Program
 				DateTime lastEndTime = EpochToDate(0);
 				var numSets = 0;
 
-				foreach (var performance in stageDay.Performances) {
+				foreach (var performance in stageDay.Performances.OrderBy(p => p.StartTime)) {
 					var title = performance.Name.Trim();
 
 					// Remove characters that mess with the formatting (remove instead of escape, because it'll make .find easier)

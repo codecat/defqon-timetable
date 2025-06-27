@@ -306,6 +306,11 @@ class Program
 					// Remove characters that mess with the formatting (remove instead of escape, because it'll make .find easier)
 					title = title.Replace("*", ""); // A*S*Y*S
 
+					// Fix Q-dance mistake
+					if (title == "Crypsis pres. My I'll Style") {
+						title = "Crypsis pres. My Ill Style";
+					}
+
 					if (performance.Host) {
 						stage.mc = title;
 						continue;

@@ -112,10 +112,16 @@ public class Set
 	public string name = "";
 }
 
+public struct MC
+{
+	public string day;
+	public string name;
+}
+
 public class Stage
 {
 	public string stage = "";
-	public string mc = "";
+	public List<MC> mcs = [];
 	public string channel = "";
 	public string emoji = "";
 	public string url = "";
@@ -324,7 +330,10 @@ class Program
 					}
 
 					if (performance.Host) {
-						stage.mc = title;
+						stage.mcs.Add(new MC() {
+							day = editionDay.Name,
+							name = title,
+						});
 						continue;
 					}
 
@@ -376,8 +385,12 @@ class Program
 			//	"sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: " +
 			//	"<https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>";
 
-			if (stage.mc != "") {
-				stage.responses["^\\.(mc|mcs)$"] = $":microphone2: The MC(s) on this stage: **{stage.mc}**";
+			if (stage.mcs.Count > 0) {
+				if (stage.mcs.GroupBy(mc => mc.name).Count() == 1) {
+					stage.responses["^\\.(mc|mcs)$"] = $":microphone2: The MC(s) on this stage: **{stage.mcs[0].name}**";
+				} else {
+					stage.responses["^\\.(mc|mcs)$"] = $":microphone2: The MC(s) on this stage: **{string.Join(", ", stage.mcs.Select(mc => $"{mc.name} ({mc.day})"))}**";
+				}
 			}
 		}
 

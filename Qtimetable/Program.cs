@@ -284,9 +284,9 @@ class Program
 				if (stageDay.Stage.Name.EndsWith(" Silent")) {
 					stageDay.Stage.Name = stageDay.Stage.Name[..^7];
 				}
-				if (stageDay.Stage.Name.EndsWith(" Night")) {
-					stageDay.Stage.Name = stageDay.Stage.Name[..^6];
-				}
+				//if (stageDay.Stage.Name.EndsWith(" Night")) {
+				//	stageDay.Stage.Name = stageDay.Stage.Name[..^6];
+				//}
 
 				string logStage = $"  \"{stageDay.Stage.Name}\" ({stageDay.CmsName})";
 
@@ -302,6 +302,18 @@ class Program
 
 				foreach (var performance in stageDay.Performances.OrderBy(p => p.StartTime)) {
 					var title = performance.Name.Trim();
+
+					// Not streamed
+					if (title == "Pythius" || title == "Murdock" || title == "USED" || title == "Mutilator" || title == "Mutilator & The Straikerz" || title == "The Warming-up with Jones") {
+						if (stage.sets.LastOrDefault()?.name != "") {
+							stage.sets.Add(new Set() {
+								name = "",
+								reportedDay = editionDay.Name,
+								dateTime = performance.StartTime.Value,
+							});
+						}
+						continue;
+					}
 
 					// Remove characters that mess with the formatting (remove instead of escape, because it'll make .find easier)
 					title = title.Replace("*", ""); // A*S*Y*S

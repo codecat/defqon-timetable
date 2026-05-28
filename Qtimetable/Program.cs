@@ -19,13 +19,12 @@ public class GraphQLQuery(string query)
 public class QdanceGraphQLResponse
 {
 	public static readonly string Query = @"{
-	event {
-		eventName
-		editions {
+	appConfig(filter: { appSlug: { eq: ""defqon1"" } }, orderBy: _createdAt_DESC) {
+		eventEdition {
 			name
 			_allReferencingEventEditionDays(orderBy: date_ASC) {
 				name date
-				_allReferencingEventEditionStageDays {
+				_allReferencingEventEditionStageDays(orderBy: _status_ASC) {
 					cmsName
 					stage { name }
 					performances {
@@ -43,15 +42,13 @@ public class QdanceGraphQLResponse
 	public DataResponse Data { get; set; }
 	public class DataResponse
 	{
-		[JsonPropertyName("event")]
-		public EventResponse Event { get; set; }
-		public class EventResponse
-		{
-			[JsonPropertyName("eventName")]
-			public string EventName { get; set; }
+		[JsonPropertyName("appConfig")]
+		public AppConfigResponse AppConfig { get; set; }
 
-			[JsonPropertyName("editions")]
-			public EventEditionResponse[] Editions { get; set; }
+		public class AppConfigResponse
+		{
+			[JsonPropertyName("eventEdition")]
+		public EventEditionResponse EventEdition { get; set; }
 			public class EventEditionResponse
 			{
 				[JsonPropertyName("name")]
@@ -264,11 +261,12 @@ class Program
 		// Download data
 		var hc = new HttpClient();
 		hc.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Reddit/Hardstyle, discord.gg/hardstyle, melissa@nimble.tools");
+		hc.DefaultRequestHeaders.TryAddWithoutValidation("x-environment", "dq26-prod");
 		var res = await hc.PostAsJsonAsync<GraphQLQuery>("https://www.q-dance.com/graphql/", new(QdanceGraphQLResponse.Query));
 		var data = await res.Content.ReadFromJsonAsync<QdanceGraphQLResponse>();
 
 		// Parse data
-		foreach (var editionDay in data.Data.Event.Editions[0].Days) {
+		foreach (var editionDay in data.Data.AppConfig.EventEdition.Days){
 			var date = editionDay.Date.Split('-');
 			var year = int.Parse(date[0]);
 			var month = int.Parse(date[1]);
@@ -395,10 +393,10 @@ class Program
 		}
 
 		// Write to file
-		if (File.Exists("Defqon2025.json")) {
-			File.Delete("Defqon2025.json");
+		if (File.Exists("Defqon2026.json")) {
+			File.Delete("Defqon2026.json");
 		}
-		using (var writer = new StreamWriter("Defqon2025.json", false, new UTF8Encoding(false))) {
+		using (var writer = new StreamWriter("Defqon2026.json", false, new UTF8Encoding(false))) {
 			writer.NewLine = "\n";
 			writer.WriteLine("[");
 			for (int j = 0; j < Stages.Count; j++) {
@@ -448,14 +446,14 @@ class Program
 		}
 
 		// Write Markdown table to file
-		if (File.Exists("Defqon2025.md")) {
-			File.Delete("Defqon2025.md");
+		if (File.Exists("Defqon2026.md")) {
+			File.Delete("Defqon2026.md");
 		}
-		using (var writer = new StreamWriter("Defqon2025.md", false, Encoding.UTF8)) {
+		using (var writer = new StreamWriter("Defqon2026.md", false, Encoding.UTF8)) {
 			writer.NewLine = "\n";
 
 			writer.WriteLine("# Schedule");
-			writer.WriteLine("This is the full (expected) timetable for the Defqon.1 2025 livestreams. I will keep it updated the best I can. Please feel free to let me know if something is wrong or needs to be updated.");
+			writer.WriteLine("This is the full (expected) timetable for the Defqon.1 2026 livestreams. I will keep it updated the best I can. Please feel free to let me know if something is wrong or needs to be updated.");
 			writer.WriteLine();
 
 			foreach (var stage in Stages) {
@@ -482,10 +480,10 @@ class Program
 		}
 
 		// Write Reddit link list to file
-		if (File.Exists("Defqon2025Reddit.md")) {
-			File.Delete("Defqon2025Reddit.md");
+		if (File.Exists("Defqon2026Reddit.md")) {
+			File.Delete("Defqon2026Reddit.md");
 		}
-		using (var writer = new StreamWriter("Defqon2025Reddit.md", false, Encoding.UTF8)) {
+		using (var writer = new StreamWriter("Defqon2026Reddit.md", false, Encoding.UTF8)) {
 			writer.NewLine = "\n";
 
 			foreach (var stage in Stages) {

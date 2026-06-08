@@ -264,11 +264,13 @@ class Program
 		// Download data
 		var hc = new HttpClient();
 		hc.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Reddit/Hardstyle, discord.gg/hardstyle, melissa@nimble.tools");
+		hc.DefaultRequestHeaders.TryAddWithoutValidation("X-Environment", "dq26-prod"); // Not sure why Q-dance thought this was a good idea
 		var res = await hc.PostAsJsonAsync<GraphQLQuery>("https://www.q-dance.com/graphql/", new(QdanceGraphQLResponse.Query));
 		var data = await res.Content.ReadFromJsonAsync<QdanceGraphQLResponse>();
 
 		// Parse data
-		foreach (var editionDay in data.Data.Event.Editions[0].Days) {
+		var eventEdition = data.Data.Event.Editions.First(e => e.Name.EndsWith("2026"));
+		foreach (var editionDay in eventEdition.Days) {
 			var date = editionDay.Date.Split('-');
 			var year = int.Parse(date[0]);
 			var month = int.Parse(date[1]);

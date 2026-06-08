@@ -271,23 +271,16 @@ class Program
 			Console.WriteLine($"{editionDay.Name} [ {year}, {month}, {day} ]");
 
 			foreach (var stageDay in editionDay.StageDays) {
-				// 1 space = black, 2 spaces = indigo, no spaces = blue
-				if (stageDay.Stage.Name == "The Gathering") {
-					stageDay.Stage.Name = "Blue";
-				} else if (stageDay.Stage.Name == "The Gathering ") {
-					stageDay.Stage.Name = "Black";
-				} else if (stageDay.Stage.Name == "The Gathering  ") {
-					stageDay.Stage.Name = "Indigo";
-				} else if (stageDay.Stage.Name == "The Closing Ceremony") {
+				if (stageDay.Stage.Name == "The Closing Ceremony") {
 					stageDay.Stage.Name = "Red";
 				}
 
-				if (stageDay.Stage.Name.EndsWith(" Silent")) {
-					stageDay.Stage.Name = stageDay.Stage.Name[..^7];
+				if (stageDay.Stage.Name.EndsWith(" (silent)")) {
+					stageDay.Stage.Name = stageDay.Stage.Name[..^9];
 				}
-				//if (stageDay.Stage.Name.EndsWith(" Night")) {
-				//	stageDay.Stage.Name = stageDay.Stage.Name[..^6];
-				//}
+				if (stageDay.Stage.Name.EndsWith(" night")) {
+					stageDay.Stage.Name = stageDay.Stage.Name[..^6];
+				}
 
 				string logStage = $"  \"{stageDay.Stage.Name}\" ({stageDay.CmsName})";
 
@@ -305,24 +298,19 @@ class Program
 					var title = performance.Name.Trim();
 
 					// Not streamed
-					if (title == "Pythius" || title == "Murdock" || title == "USED" || title == "Mutilator" || title == "Mutilator & The Straikerz" || title == "The Warming-up with Jones") {
-						if (stage.sets.LastOrDefault()?.name != "") {
-							stage.sets.Add(new Set() {
-								name = "",
-								reportedDay = editionDay.Name,
-								dateTime = performance.StartTime.Value,
-							});
-						}
-						continue;
-					}
+					// if (title == "Pythius" || title == "Murdock" || title == "USED" || title == "Mutilator" || title == "Mutilator & The Straikerz" || title == "The Warming-up with Jones") {
+					// 	if (stage.sets.LastOrDefault()?.name != "") {
+					// 		stage.sets.Add(new Set() {
+					// 			name = "",
+					// 			reportedDay = editionDay.Name,
+					// 			dateTime = performance.StartTime.Value,
+					// 		});
+					// 	}
+					// 	continue;
+					// }
 
 					// Remove characters that mess with the formatting (remove instead of escape, because it'll make .find easier)
 					title = title.Replace("*", ""); // A*S*Y*S
-
-					// Fix Q-dance mistake
-					if (title == "Crypsis pres. My I'll Style") {
-						title = "Crypsis pres. My Ill Style";
-					}
 
 					if (performance.Host) {
 						stage.mcs.Add(new MC() {

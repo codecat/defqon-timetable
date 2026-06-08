@@ -397,10 +397,10 @@ class Program
 		}
 
 		// Write to file
-		if (File.Exists("Defqon2025.json")) {
-			File.Delete("Defqon2025.json");
+		if (File.Exists("Defqon2026.json")) {
+			File.Delete("Defqon2026.json");
 		}
-		using (var writer = new StreamWriter("Defqon2025.json", false, new UTF8Encoding(false))) {
+		using (var writer = new StreamWriter("Defqon2026.json", false, new UTF8Encoding(false))) {
 			writer.NewLine = "\n";
 			writer.WriteLine("[");
 			for (int j = 0; j < Stages.Count; j++) {
@@ -450,14 +450,14 @@ class Program
 		}
 
 		// Write Markdown table to file
-		if (File.Exists("Defqon2025.md")) {
-			File.Delete("Defqon2025.md");
+		if (File.Exists("Defqon2026.md")) {
+			File.Delete("Defqon2026.md");
 		}
-		using (var writer = new StreamWriter("Defqon2025.md", false, Encoding.UTF8)) {
+		using (var writer = new StreamWriter("Defqon2026.md", false, Encoding.UTF8)) {
 			writer.NewLine = "\n";
 
 			writer.WriteLine("# Schedule");
-			writer.WriteLine("This is the full (expected) timetable for the Defqon.1 2025 livestreams. I will keep it updated the best I can. Please feel free to let me know if something is wrong or needs to be updated.");
+			writer.WriteLine("This is the full (expected) timetable for the Defqon.1 2026 livestreams. I will keep it updated the best I can. Please feel free to let me know if something is wrong or needs to be updated.");
 			writer.WriteLine();
 
 			foreach (var stage in Stages) {
@@ -484,10 +484,10 @@ class Program
 		}
 
 		// Write Reddit link list to file
-		if (File.Exists("Defqon2025Reddit.md")) {
-			File.Delete("Defqon2025Reddit.md");
+		if (File.Exists("Defqon2026Reddit.md")) {
+			File.Delete("Defqon2026Reddit.md");
 		}
-		using (var writer = new StreamWriter("Defqon2025Reddit.md", false, Encoding.UTF8)) {
+		using (var writer = new StreamWriter("Defqon2026Reddit.md", false, Encoding.UTF8)) {
 			writer.NewLine = "\n";
 
 			foreach (var stage in Stages) {

@@ -241,13 +241,6 @@ class Program
 		});
 
 		Stages.Add(new() {
-			stage = "WHITE",
-			channel = "1387349040651305041",
-			emoji = "<:dq_white:1387378251562745906>",
-			url = "https://defqon1white.mixlr.com/embed",
-		});
-
-		Stages.Add(new() {
 			stage = "SILVER",
 			channel = "1387349050478690356",
 			emoji = "<:dq_silver:988094946756141156>",

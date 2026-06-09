@@ -312,17 +312,6 @@ class Program
 					// Remove characters that mess with the formatting (remove instead of escape, because it'll make .find easier)
 					title = title.Replace("*", ""); // A*S*Y*S
 
-					// Clarify titles
-					if (title == "REDRACE WINNER") {
-						title = "RED Race Winner (Testarossa)";
-					} else if (title == "RED Race #2") {
-						//todo
-					} else if (title == "RED Race #3") {
-						//todo
-					} else if (title == "RED Race #4") {
-						//todo
-					}
-
 					if (performance.Host) {
 						stage.mcs.Add(new MC() {
 							day = editionDay.Name,

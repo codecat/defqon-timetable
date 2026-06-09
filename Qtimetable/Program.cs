@@ -126,7 +126,6 @@ public class Stage
 	public string emoji = "";
 	public string url = "";
 	public List<Set> sets = new List<Set>();
-	public Dictionary<string, string> responses = new Dictionary<string, string>();
 }
 
 class Program
@@ -359,24 +358,6 @@ class Program
 			});
 		}
 
-		// Add common responses to all stages
-		foreach (var stage in Stages) {
-			stage.responses["^\\.(url|stream|link|watch)$"] = $":tv: Tune in to the livestream here: **<{stage.url}>**";
-			//stage.responses["^\\.(hidechat|removechat|fuckchat)$"] =
-			//	":thinking: Press F12 and paste this into the console to hide the chat on live.q-dance.com: " +
-			//	"```sc=document.getElementById(\"scrollContainer\");sc.classList.remove(\"col-l--9\");sc.classList.remove(\"col-m--8\");" +
-			//	"sc.classList.add(\"col-l--12\");sc.classList.remove(\"col-m--12\");``` :woman_tipping_hand: You can also use this userscript: " +
-			//	"<https://greasyfork.org/en/scripts/446916-hide-q-dance-chat>";
-
-			if (stage.mcs.Count > 0) {
-				if (stage.mcs.GroupBy(mc => mc.name).Count() == 1) {
-					stage.responses["^\\.(mc|mcs)$"] = $":microphone2: The MC(s) on this stage: **{stage.mcs[0].name}**";
-				} else {
-					stage.responses["^\\.(mc|mcs)$"] = $":microphone2: The MC(s) on this stage: **{string.Join(", ", stage.mcs.Select(mc => $"{mc.name} ({mc.day})"))}**";
-				}
-			}
-		}
-
 		// Write to file
 		if (File.Exists("Defqon2026.json")) {
 			File.Delete("Defqon2026.json");
@@ -393,6 +374,17 @@ class Program
 				writer.WriteLine("\t\t\"emoji\": \"{0}\",", stage.emoji);
 				writer.WriteLine("\t\t\"url\": \"{0}\",", stage.url);
 				writer.WriteLine("\t\t\"streamdelay\":0,");
+				writer.WriteLine("\t\t\"mcs\": [");
+				for (int i = 0; i < stage.mcs.Count; i++) {
+					var mc = stage.mcs[i];
+					writer.Write("\t\t\t{{ \"day\": \"{0}\", \"name\": \"{1}\" }}", mc.day, mc.name);
+					if (i == stage.mcs.Count - 1) {
+						writer.WriteLine();
+					} else {
+						writer.WriteLine(",");
+					}
+				}
+				writer.WriteLine("\t\t],");
 				writer.WriteLine("\t\t\"sets\": [");
 				for (int i = 0; i < stage.sets.Count; i++) {
 					var set = stage.sets[i];
@@ -407,18 +399,7 @@ class Program
 						writer.WriteLine(",");
 					}
 				}
-				writer.WriteLine("\t\t],");
-				writer.WriteLine("\t\t\"responses\": {");
-				for (int i = 0; i < stage.responses.Count; i++) {
-					var pair = stage.responses.ElementAt(i);
-					writer.Write("\t\t\t\"{0}\":\"{1}\"", JsonEncode(pair.Key), JsonEncode(pair.Value));
-					if (i == stage.responses.Count - 1) {
-						writer.WriteLine();
-					} else {
-						writer.WriteLine(",");
-					}
-				}
-				writer.WriteLine("\t\t}");
+				writer.WriteLine("\t\t]");
 				writer.Write("\t}");
 
 				if (j == Stages.Count - 1) {

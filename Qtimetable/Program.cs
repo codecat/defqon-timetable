@@ -157,98 +157,98 @@ class Program
 		// Create stages with info that we care about
 		Stages.Add(new() {
 			stage = "RED",
-			channel = "1387805277692104774",
+			channel = "1517594504423674157",
 			emoji = "<:dq_red:988093668219031603>",
 			url = "https://www.youtube.com/@qdance/live",
 		});
 
 		Stages.Add(new() {
 			stage = "BLUE",
-			channel = "1387348870295457852",
+			channel = "1517594520471081121",
 			emoji = "<:dq_blue:988094952280055808>",
 			url = "https://defqon1blue.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "BLACK",
-			channel = "1387348902914818170",
+			channel = "1517594537755934904",
 			emoji = "<:dq_black:988094951038537778>",
 			url = "https://defqon1black.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "U.V.",
-			channel = "1387348921256382517",
+			channel = "1517594816882540714",
 			emoji = "<:dq_uv:988094948199006298>",
 			url = "https://defqon1uv.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "MAGENTA",
-			channel = "1387348935785582602",
+			channel = "1517594833500246159",
 			emoji = "<:dq_magenta:988094945057452203>",
 			url = "https://defqon-1-magenta.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "INDIGO",
-			channel = "1387348951346450432",
+			channel = "1517594851829485700",
 			emoji = "<:dq_indigo:988094943790792724>",
 			url = "https://defqon1indigo.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "GOLD",
-			channel = "1387348963191164939",
+			channel = "1517594871731454022",
 			emoji = "<:dq_gold:988094953903231036>",
 			url = "https://defqon1gold.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "YELLOW",
-			channel = "1387348977573298186",
+			channel = "1517594895005515826",
 			emoji = "<:dq_yellow:988094949780246548>",
 			url = "https://defqon1yellow.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "GREEN",
-			channel = "1387348989808082995",
+			channel = "1517594933102514216",
 			emoji = "<:dq_green:1387365970779050064>",
 			url = "https://defqon1green.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "PINK",
-			channel = "1387349000184922172",
+			channel = "1517594949439328437",
 			emoji = "<:dq_pink:1387365972502908929>",
 			url = "https://defqon1pink.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "PURPLE",
-			channel = "1387349012910313584",
+			channel = "1517594970360516650",
 			emoji = "<:dq_purple:988094360006574103>",
 			url = "https://defqon1purple.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "ORANGE",
-			channel = "1387349023354261515",
+			channel = "1517594991520907284",
 			emoji = "<:qdance:700038070594043986>",
 			url = "https://defqon1orange.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "SILVER",
-			channel = "1387349050478690356",
+			channel = "1517595003617022013",
 			emoji = "<:dq_silver:988094946756141156>",
 			url = "https://defqon1silver.mixlr.com/embed",
 		});
 
 		Stages.Add(new() {
 			stage = "BROWN",
-			channel = "1387799382379729036",
+			channel = "1517595012920250411",
 			emoji = "<:dq_brown:1387377060288401408>",
 			url = "https://defqon-1-brown.mixlr.com/embed",
 		});

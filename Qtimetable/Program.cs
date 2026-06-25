@@ -296,17 +296,28 @@ class Program
 				foreach (var performance in stageDay.Performances.OrderBy(p => p.StartTime)) {
 					var title = performance.Name.Trim();
 
-					// Not streamed
-					// if (title == "Pythius" || title == "Murdock" || title == "USED" || title == "Mutilator" || title == "Mutilator & The Straikerz" || title == "The Warming-up with Jones") {
-					// 	if (stage.sets.LastOrDefault()?.name != "") {
-					// 		stage.sets.Add(new Set() {
-					// 			name = "",
-					// 			reportedDay = editionDay.Name,
-					// 			dateTime = performance.StartTime.Value,
-					// 		});
-					// 	}
-					// 	continue;
-					// }
+					if (
+						// Not streamed
+						title.StartsWith("GPF presents") ||
+						// Canceled
+						title == "Warrior Workout" || title == "The Warming-up with Creeds & Geck-o"
+						) {
+						if (stage.sets.LastOrDefault()?.name != "") {
+							stage.sets.Add(new Set() {
+								name = "",
+								reportedDay = editionDay.Name,
+								dateTime = performance.StartTime.Value,
+							});
+						}
+						continue;
+					}
+
+					// Power Hour and Showtek are swapped (?) and aren't reflected in Q-dance's schedule yet
+					if (title == "POWER HOUR") {
+						title = "Showtek (?)";
+					} else if (title == "Showtek") {
+						title = "POWER HOUR";
+					}
 
 					// Remove characters that mess with the formatting (remove instead of escape, because it'll make .find easier)
 					title = title.Replace("*", ""); // A*S*Y*S

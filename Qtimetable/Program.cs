@@ -246,12 +246,12 @@ class Program
 			url = "https://defqon1silver.mixlr.com/embed",
 		});
 
-		Stages.Add(new() {
-			stage = "BROWN",
-			channel = "1517595012920250411",
-			emoji = "<:dq_brown:1387377060288401408>",
-			url = "https://defqon-1-brown.mixlr.com/embed",
-		});
+		//Stages.Add(new() {
+		//	stage = "BROWN",
+		//	channel = "1517595012920250411",
+		//	emoji = "<:dq_brown:1387377060288401408>",
+		//	url = "https://0md.nl/",
+		//});
 
 		// Download data
 		var hc = new HttpClient();
